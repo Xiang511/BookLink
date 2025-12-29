@@ -119,6 +119,11 @@ namespace Online_Ordering_System
         {
             RegisterForm registerForm = new RegisterForm();
             registerForm.ShowDialog();
+            
+
+
+
+
         }
     }
 }

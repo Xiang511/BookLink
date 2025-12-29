@@ -47,7 +47,7 @@ namespace Online_Ordering_System
             // txtUsername
             // 
             this.txtUsername.Font = new System.Drawing.Font("Consolas", 14F);
-            this.txtUsername.Location = new System.Drawing.Point(753, 194);
+            this.txtUsername.Location = new System.Drawing.Point(753, 354);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(250, 29);
             this.txtUsername.TabIndex = 2;
@@ -73,7 +73,7 @@ namespace Online_Ordering_System
             // txtEmail
             // 
             this.txtEmail.Font = new System.Drawing.Font("Consolas", 14F);
-            this.txtEmail.Location = new System.Drawing.Point(753, 358);
+            this.txtEmail.Location = new System.Drawing.Point(753, 198);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(250, 29);
             this.txtEmail.TabIndex = 8;
@@ -114,12 +114,13 @@ namespace Online_Ordering_System
             this.lblTitle.Size = new System.Drawing.Size(418, 112);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Sign Up";
+            this.lblTitle.Click += new System.EventHandler(this.lblTitle_Click);
             // 
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
             this.lblUsername.Font = new System.Drawing.Font("Consolas", 14F);
-            this.lblUsername.Location = new System.Drawing.Point(631, 201);
+            this.lblUsername.Location = new System.Drawing.Point(626, 357);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(110, 22);
             this.lblUsername.TabIndex = 1;
@@ -151,7 +152,7 @@ namespace Online_Ordering_System
             // 
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("Consolas", 14F);
-            this.lblEmail.Location = new System.Drawing.Point(645, 361);
+            this.lblEmail.Location = new System.Drawing.Point(645, 205);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(90, 22);
             this.lblEmail.TabIndex = 7;
@@ -178,6 +179,7 @@ namespace Online_Ordering_System
             this.label1.Size = new System.Drawing.Size(320, 22);
             this.label1.TabIndex = 12;
             this.label1.Text = "Already have an account? Log in";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // RegisterForm
             // 
@@ -248,9 +250,9 @@ namespace Online_Ordering_System
             }
 
             // 檢查用戶名是否已存在
-            if (DatabaseHelper.UserExists(username))
+            if (DatabaseHelper.EmailExists(email))
             {
-                MessageBox.Show("此用戶名已被使用，請選擇其他用戶名", "註冊錯誤", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("此 email 已被使用，請選擇其他 email ", "註冊錯誤", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtUsername.Focus();
                 return;
             }
@@ -291,6 +293,18 @@ namespace Online_Ordering_System
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            RegisterForm Register = new RegisterForm();
+            this.Close();
+
+        }
+
+        private void lblTitle_Click(object sender, EventArgs e)
         {
 
         }

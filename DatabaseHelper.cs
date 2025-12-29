@@ -178,6 +178,30 @@ namespace Online_Ordering_System
                 return false;
             }
         }
+        public static bool EmailExists(string email)
+        {
+            try
+            {
+                using (SqlConnection conn = GetConnection())
+                {
+                    conn.Open();
+                    string query = "SELECT COUNT(*) FROM Users WHERE Email = @Email";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Email", email);
+                        int count = (int)cmd.ExecuteScalar();
+                        return count > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("檢查email失敗：" + ex.Message, "錯誤",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
 
         /// <summary>
         /// 註冊新使用者
