@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.materialButton1 = new MaterialSkin.Controls.MaterialButton();
+            this.login = new MaterialSkin.Controls.MaterialButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.title = new System.Windows.Forms.Label();
             this.subTitle = new System.Windows.Forms.Label();
@@ -38,35 +38,36 @@
             this.label2 = new System.Windows.Forms.Label();
             this.input_username = new System.Windows.Forms.TextBox();
             this.googleLogin = new MaterialSkin.Controls.MaterialButton();
-            this.label3 = new System.Windows.Forms.Label();
+            this.registerBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // materialButton1
+            // login
             // 
-            this.materialButton1.AutoSize = false;
-            this.materialButton1.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.materialButton1.Depth = 0;
-            this.materialButton1.Font = new System.Drawing.Font("Consolas", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.materialButton1.HighEmphasis = true;
-            this.materialButton1.Icon = null;
-            this.materialButton1.Location = new System.Drawing.Point(618, 450);
-            this.materialButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton1.Name = "materialButton1";
-            this.materialButton1.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton1.Size = new System.Drawing.Size(408, 36);
-            this.materialButton1.TabIndex = 0;
-            this.materialButton1.Text = "Login";
-            this.materialButton1.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.materialButton1.UseAccentColor = false;
-            this.materialButton1.UseVisualStyleBackColor = true;
-            this.materialButton1.Click += new System.EventHandler(this.materialButton1_Click);
+            this.login.AutoSize = false;
+            this.login.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.login.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.login.Depth = 0;
+            this.login.Font = new System.Drawing.Font("Consolas", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.login.HighEmphasis = true;
+            this.login.Icon = null;
+            this.login.Location = new System.Drawing.Point(618, 441);
+            this.login.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.login.MouseState = MaterialSkin.MouseState.HOVER;
+            this.login.Name = "login";
+            this.login.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.login.Size = new System.Drawing.Size(408, 36);
+            this.login.TabIndex = 0;
+            this.login.Text = "Login";
+            this.login.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.login.UseAccentColor = false;
+            this.login.UseVisualStyleBackColor = true;
+            this.login.Click += new System.EventHandler(this.materialButton1_Click);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Online_Ordering_System.Properties.Resources.undraw_login_weas;
-            this.pictureBox1.Location = new System.Drawing.Point(117, 105);
+            this.pictureBox1.Location = new System.Drawing.Point(104, 106);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(480, 469);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -154,13 +155,14 @@
             // googleLogin
             // 
             this.googleLogin.AutoSize = false;
+            this.googleLogin.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.googleLogin.BackColor = System.Drawing.Color.IndianRed;
             this.googleLogin.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.googleLogin.Depth = 0;
             this.googleLogin.Font = new System.Drawing.Font("Consolas", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.googleLogin.HighEmphasis = true;
             this.googleLogin.Icon = null;
-            this.googleLogin.Location = new System.Drawing.Point(618, 514);
+            this.googleLogin.Location = new System.Drawing.Point(618, 501);
             this.googleLogin.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.googleLogin.MouseState = MaterialSkin.MouseState.HOVER;
             this.googleLogin.Name = "googleLogin";
@@ -172,16 +174,20 @@
             this.googleLogin.UseAccentColor = false;
             this.googleLogin.UseVisualStyleBackColor = false;
             // 
-            // label3
+            // registerBtn
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label3.Location = new System.Drawing.Point(705, 570);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(272, 18);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "Don\'t have an account ?  Register";
+            this.registerBtn.BackColor = System.Drawing.SystemColors.Window;
+            this.registerBtn.FlatAppearance.BorderSize = 0;
+            this.registerBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.registerBtn.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.registerBtn.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.registerBtn.Location = new System.Drawing.Point(660, 552);
+            this.registerBtn.Name = "registerBtn";
+            this.registerBtn.Size = new System.Drawing.Size(345, 23);
+            this.registerBtn.TabIndex = 11;
+            this.registerBtn.Text = "Don\'t have an account ?  Register";
+            this.registerBtn.UseVisualStyleBackColor = false;
+            this.registerBtn.Click += new System.EventHandler(this.registerBtn_Click);
             // 
             // Form1
             // 
@@ -190,7 +196,7 @@
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(1130, 641);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.registerBtn);
             this.Controls.Add(this.googleLogin);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -200,7 +206,7 @@
             this.Controls.Add(this.subTitle);
             this.Controls.Add(this.title);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.materialButton1);
+            this.Controls.Add(this.login);
             this.Name = "Form1";
             this.Text = "login";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -212,7 +218,7 @@
 
         #endregion
 
-        private MaterialSkin.Controls.MaterialButton materialButton1;
+        private MaterialSkin.Controls.MaterialButton login;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label title;
         private System.Windows.Forms.Label subTitle;
@@ -222,7 +228,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox input_username;
         private MaterialSkin.Controls.MaterialButton googleLogin;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button registerBtn;
     }
 }
 

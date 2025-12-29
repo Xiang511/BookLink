@@ -19,7 +19,25 @@ namespace Online_Ordering_System
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            // 測試資料庫連線
+            if (!DatabaseHelper.DatabaseExists())
+            {
+                DialogResult result = MessageBox.Show(
+                    "無法連線到資料庫！\n\n是否要測試資料庫連線？", 
+                    "資料庫連線警告", 
+                    MessageBoxButtons.YesNo, 
+                    MessageBoxIcon.Warning);
+                
+                if (result == DialogResult.Yes)
+                {
+                    DatabaseHelper.TestConnection();
+                }
+            }
+            else
+            {
+                // 初始化資料庫表格
+                DatabaseHelper.InitializeDatabase();
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -39,13 +57,68 @@ namespace Online_Ordering_System
 
         private void input_username_KeyDown(object sender, KeyEventArgs e)
         {
-     
-            
+            if (e.KeyCode == Keys.Enter)
+            {
+                input_pwd.Focus();
+            }
+        }
+
+        private void input_pwd_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                materialButton1_Click(sender, e);
+            }
         }
 
         private void materialButton1_Click(object sender, EventArgs e)
         {
+            string username = input_username.Text.Trim();
+            string password = input_pwd.Text.Trim();
 
+            if (string.IsNullOrEmpty(username))
+            {
+                MessageBox.Show("請輸入用戶名", "登入錯誤", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                input_username.Focus();
+                return;
+            }
+
+            if (string.IsNullOrEmpty(password))
+            {
+                MessageBox.Show("請輸入密碼", "登入錯誤", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                input_pwd.Focus();
+                return;
+            }
+
+            if (ValidateLogin(username, password))
+            {
+                MessageBox.Show("登入成功！", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Form2 form2 = new Form2();
+                form2.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("用戶名或密碼錯誤", "登入失敗", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                input_pwd.Clear();
+                input_username.Focus();
+            }
+        }
+
+        private bool ValidateLogin(string username, string password)
+        {
+            return DatabaseHelper.ValidateUser(username, password);
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            DatabaseHelper.TestConnection();
+        }
+
+        private void registerBtn_Click(object sender, EventArgs e)
+        {
+            RegisterForm registerForm = new RegisterForm();
+            registerForm.ShowDialog();
         }
     }
 }
