@@ -28,13 +28,201 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.materialButton1 = new MaterialSkin.Controls.MaterialButton();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.title = new System.Windows.Forms.Label();
+            this.subTitle = new System.Windows.Forms.Label();
+            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            this.input_pwd = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.input_username = new System.Windows.Forms.TextBox();
+            this.googleLogin = new MaterialSkin.Controls.MaterialButton();
+            this.label3 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // materialButton1
+            // 
+            this.materialButton1.AutoSize = false;
+            this.materialButton1.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.materialButton1.Depth = 0;
+            this.materialButton1.Font = new System.Drawing.Font("Consolas", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.materialButton1.HighEmphasis = true;
+            this.materialButton1.Icon = null;
+            this.materialButton1.Location = new System.Drawing.Point(618, 450);
+            this.materialButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialButton1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialButton1.Name = "materialButton1";
+            this.materialButton1.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.materialButton1.Size = new System.Drawing.Size(408, 36);
+            this.materialButton1.TabIndex = 0;
+            this.materialButton1.Text = "Login";
+            this.materialButton1.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.materialButton1.UseAccentColor = false;
+            this.materialButton1.UseVisualStyleBackColor = true;
+            this.materialButton1.Click += new System.EventHandler(this.materialButton1_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Online_Ordering_System.Properties.Resources.undraw_login_weas;
+            this.pictureBox1.Location = new System.Drawing.Point(117, 105);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(480, 469);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
+            // title
+            // 
+            this.title.AutoSize = true;
+            this.title.Font = new System.Drawing.Font("Consolas", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.title.Location = new System.Drawing.Point(590, 82);
+            this.title.Name = "title";
+            this.title.Size = new System.Drawing.Size(471, 112);
+            this.title.TabIndex = 2;
+            this.title.Text = "Welcome!";
+            // 
+            // subTitle
+            // 
+            this.subTitle.AutoSize = true;
+            this.subTitle.Font = new System.Drawing.Font("Consolas", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.subTitle.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.subTitle.Location = new System.Drawing.Point(603, 194);
+            this.subTitle.Name = "subTitle";
+            this.subTitle.Size = new System.Drawing.Size(255, 34);
+            this.subTitle.TabIndex = 3;
+            this.subTitle.Text = "Login to access";
+            this.subTitle.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // materialLabel1
+            // 
+            this.materialLabel1.AutoSize = true;
+            this.materialLabel1.Depth = 0;
+            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel1.Location = new System.Drawing.Point(688, 339);
+            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel1.Name = "materialLabel1";
+            this.materialLabel1.Size = new System.Drawing.Size(1, 0);
+            this.materialLabel1.TabIndex = 4;
+            // 
+            // input_pwd
+            // 
+            this.input_pwd.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.input_pwd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.input_pwd.Font = new System.Drawing.Font("新細明體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.input_pwd.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.input_pwd.Location = new System.Drawing.Point(737, 374);
+            this.input_pwd.Name = "input_pwd";
+            this.input_pwd.PasswordChar = '*';
+            this.input_pwd.Size = new System.Drawing.Size(289, 33);
+            this.input_pwd.TabIndex = 6;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Consolas", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(613, 311);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(116, 28);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "username";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Consolas", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(613, 374);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(116, 28);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "password";
+            // 
+            // input_username
+            // 
+            this.input_username.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.input_username.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.input_username.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.input_username.Location = new System.Drawing.Point(737, 307);
+            this.input_username.Name = "input_username";
+            this.input_username.Size = new System.Drawing.Size(287, 32);
+            this.input_username.TabIndex = 7;
+            this.input_username.TextChanged += new System.EventHandler(this.input_username_TextChanged);
+            // 
+            // googleLogin
+            // 
+            this.googleLogin.AutoSize = false;
+            this.googleLogin.BackColor = System.Drawing.Color.IndianRed;
+            this.googleLogin.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.googleLogin.Depth = 0;
+            this.googleLogin.Font = new System.Drawing.Font("Consolas", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.googleLogin.HighEmphasis = true;
+            this.googleLogin.Icon = null;
+            this.googleLogin.Location = new System.Drawing.Point(618, 514);
+            this.googleLogin.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.googleLogin.MouseState = MaterialSkin.MouseState.HOVER;
+            this.googleLogin.Name = "googleLogin";
+            this.googleLogin.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.googleLogin.Size = new System.Drawing.Size(408, 36);
+            this.googleLogin.TabIndex = 10;
+            this.googleLogin.Text = "Google";
+            this.googleLogin.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.googleLogin.UseAccentColor = false;
+            this.googleLogin.UseVisualStyleBackColor = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.SteelBlue;
+            this.label3.Location = new System.Drawing.Point(705, 570);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(272, 18);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Don\'t have an account ?  Register";
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ClientSize = new System.Drawing.Size(1130, 641);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.googleLogin);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.input_pwd);
+            this.Controls.Add(this.input_username);
+            this.Controls.Add(this.materialLabel1);
+            this.Controls.Add(this.subTitle);
+            this.Controls.Add(this.title);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.materialButton1);
+            this.Name = "Form1";
+            this.Text = "login";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private MaterialSkin.Controls.MaterialButton materialButton1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label title;
+        private System.Windows.Forms.Label subTitle;
+        private MaterialSkin.Controls.MaterialLabel materialLabel1;
+        private System.Windows.Forms.TextBox input_pwd;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox input_username;
+        private MaterialSkin.Controls.MaterialButton googleLogin;
+        private System.Windows.Forms.Label label3;
     }
 }
 

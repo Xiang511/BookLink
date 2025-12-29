@@ -16,5 +16,36 @@ namespace Online_Ordering_System
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void input_username_TextChanged(object sender, EventArgs e)
+        {
+    
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void input_username_KeyDown(object sender, KeyEventArgs e)
+        {
+     
+            
+        }
+
+        private void materialButton1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
