@@ -47,7 +47,7 @@ namespace Online_Ordering_System
             // txtUsername
             // 
             this.txtUsername.Font = new System.Drawing.Font("Consolas", 14F);
-            this.txtUsername.Location = new System.Drawing.Point(753, 354);
+            this.txtUsername.Location = new System.Drawing.Point(753, 198);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(250, 29);
             this.txtUsername.TabIndex = 2;
@@ -73,7 +73,7 @@ namespace Online_Ordering_System
             // txtEmail
             // 
             this.txtEmail.Font = new System.Drawing.Font("Consolas", 14F);
-            this.txtEmail.Location = new System.Drawing.Point(753, 198);
+            this.txtEmail.Location = new System.Drawing.Point(753, 350);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(250, 29);
             this.txtEmail.TabIndex = 8;
@@ -88,7 +88,7 @@ namespace Online_Ordering_System
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(392, 40);
             this.btnRegister.TabIndex = 9;
-            this.btnRegister.Text = "Sign in";
+            this.btnRegister.Text = "Sign up";
             this.btnRegister.UseVisualStyleBackColor = false;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
@@ -120,7 +120,7 @@ namespace Online_Ordering_System
             // 
             this.lblUsername.AutoSize = true;
             this.lblUsername.Font = new System.Drawing.Font("Consolas", 14F);
-            this.lblUsername.Location = new System.Drawing.Point(626, 357);
+            this.lblUsername.Location = new System.Drawing.Point(635, 205);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(110, 22);
             this.lblUsername.TabIndex = 1;
@@ -131,7 +131,7 @@ namespace Online_Ordering_System
             // 
             this.lblPassword.AutoSize = true;
             this.lblPassword.Font = new System.Drawing.Font("Consolas", 14F);
-            this.lblPassword.Location = new System.Drawing.Point(645, 256);
+            this.lblPassword.Location = new System.Drawing.Point(647, 256);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(100, 22);
             this.lblPassword.TabIndex = 3;
@@ -141,7 +141,7 @@ namespace Online_Ordering_System
             // 
             this.lblConfirmPassword.AutoSize = true;
             this.lblConfirmPassword.Font = new System.Drawing.Font("Consolas", 14F);
-            this.lblConfirmPassword.Location = new System.Drawing.Point(565, 302);
+            this.lblConfirmPassword.Location = new System.Drawing.Point(567, 302);
             this.lblConfirmPassword.Name = "lblConfirmPassword";
             this.lblConfirmPassword.Size = new System.Drawing.Size(180, 22);
             this.lblConfirmPassword.TabIndex = 5;
@@ -152,7 +152,7 @@ namespace Online_Ordering_System
             // 
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("Consolas", 14F);
-            this.lblEmail.Location = new System.Drawing.Point(645, 205);
+            this.lblEmail.Location = new System.Drawing.Point(647, 353);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(90, 22);
             this.lblEmail.TabIndex = 7;
@@ -254,6 +254,12 @@ namespace Online_Ordering_System
             {
                 MessageBox.Show("此 email 已被使用，請選擇其他 email ", "註冊錯誤", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtUsername.Focus();
+                return;
+            }
+            // 1. 檢查帳號是否重複
+            if (DatabaseHelper.UserExists(username))
+            {
+                MessageBox.Show("此帳號已被使用！");
                 return;
             }
 
