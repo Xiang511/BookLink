@@ -1,7 +1,7 @@
 -- ============================================
 -- 線上訂購系統資料庫初始化腳本
 -- ============================================
-
+use OnlineOrderingSystem
 -- 建立 Users 資料表
 CREATE TABLE Users (
     UserId INT PRIMARY KEY IDENTITY(1,1),
@@ -55,9 +55,11 @@ INSERT INTO Orders (UserId, ProductName, Quantity, Price, TotalAmount, Status) V
 (1, N'珍珠奶茶', 2, 50.00, 100.00, N'已完成'),
 (1, N'芒果冰沙', 1, 65.00, 65.00, N'處理中'),
 (2, N'抹茶拿鐵', 3, 60.00, 180.00, N'已完成'),
+(2, N'經典美式咖啡', 2, 45.00, 90.00, N'待處理'),
 (2, N'經典美式咖啡', 2, 45.00, 90.00, N'待處理');
 
 -- 查詢測試
 SELECT * FROM Users;
 SELECT * FROM Products;
 SELECT * FROM Orders;
+SELECT COUNT(*) FROM Orders o INNER JOIN Users u ON o.UserId = u.UserId WHERE u.Username = 'admin'

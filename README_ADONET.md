@@ -153,12 +153,10 @@ Online Ordering System/
 ## 未來擴展建議
 1. 在 Form2 中實作產品列表顯示（使用 DataGridView + SqlDataAdapter）
 2. 實作訂單管理功能（使用 SqlCommand 進行 CRUD 操作）
-3. 密碼加密（目前為明文儲存，建議使用 Hash）
-4. 實作購物車功能
-5. 訂單歷史記錄查詢
+3. 實作購物車功能
+4. 訂單歷史記錄查詢
 
-## 注意事項
-?? **安全警告**：目前密碼以明文儲存，正式環境應使用 Hash 加密（如 SHA256 或 bcrypt）
+
 
 ## 開發者
 Online Ordering System Development Team
