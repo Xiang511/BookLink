@@ -14,5 +14,7 @@ namespace Online_Ordering_System
         public static String Username ="";
 
         public static bool islogin = false;
+
+        public static int bannerIndex = 0;
     }
 }

@@ -37,12 +37,13 @@ namespace Online_Ordering_System
                 toolStripLBlUserName.IsLink = false;
                 toolStripLblLogout.Visible = true;
             }
-       
+            
+
         }
 
         private void toolStripLabel1_Click(object sender, EventArgs e)
         {
-           
+            LoadUserControl<home>();
         }
 
         private void toolStripLblHome_Paint(object sender, PaintEventArgs e)
@@ -107,7 +108,7 @@ namespace Online_Ordering_System
         {
             Form Form1 = new Form1();
             Form1.Show();
-            
+
             Form3 form3 = this;
             form3.Hide();
         }
@@ -119,8 +120,26 @@ namespace Online_Ordering_System
 
         private void toolStripLBlUserName_OwnerChanged(object sender, EventArgs e)
         {
-           
+
         }
-       
+
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
+            if (globalVal.bannerIndex < 5)
+            {
+                globalVal.bannerIndex++;
+                BannerSlider.ImageLocation = $"Image/Banner{globalVal.bannerIndex}.png";
+
+            }
+            else
+            {
+                globalVal.bannerIndex = 1;
+                BannerSlider.ImageLocation = $"Image/Banner{globalVal.bannerIndex}.png";
+
+            }
+        }
     }
 }
+
