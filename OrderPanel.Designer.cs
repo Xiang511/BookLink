@@ -1,6 +1,6 @@
 ﻿namespace Online_Ordering_System
 {
-    partial class UserControl1
+    partial class OrderPanel
     {
         /// <summary> 
         /// 設計工具所需的變數。
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserControl1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrderPanel));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.LblOrderCount = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();

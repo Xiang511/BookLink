@@ -1,6 +1,6 @@
 ﻿namespace Online_Ordering_System
 {
-    partial class home
+    partial class HomePanel
     {
         /// <summary> 
         /// 設計工具所需的變數。
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(home));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomePanel));
             this.BannerSlider = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.BannerSlider)).BeginInit();

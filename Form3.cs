@@ -38,12 +38,12 @@ namespace Online_Ordering_System
                 toolStripLblLogout.Visible = true;
             }
             
-
+            LoadUserControl<HomePanel>();
         }
 
         private void toolStripLabel1_Click(object sender, EventArgs e)
         {
-            LoadUserControl<home>();
+            LoadUserControl<HomePanel>();
         }
 
         private void toolStripLblHome_Paint(object sender, PaintEventArgs e)
@@ -91,7 +91,7 @@ namespace Online_Ordering_System
 
         private void toolStripLblOrder_Click(object sender, EventArgs e)
         {
-            LoadUserControl<UserControl1>();
+            LoadUserControl<OrderPanel>();
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -124,21 +124,16 @@ namespace Online_Ordering_System
         }
 
 
-        private void timer1_Tick(object sender, EventArgs e)
+     
+
+        private void toolStripLabel1_Click_1(object sender, EventArgs e)
         {
+            LoadUserControl<MarketPanel>();
+        }
 
-            if (globalVal.bannerIndex < 5)
-            {
-                globalVal.bannerIndex++;
-                BannerSlider.ImageLocation = $"Image/Banner{globalVal.bannerIndex}.png";
-
-            }
-            else
-            {
-                globalVal.bannerIndex = 1;
-                BannerSlider.ImageLocation = $"Image/Banner{globalVal.bannerIndex}.png";
-
-            }
+        private void toolStripLblShopCar_Click(object sender, EventArgs e)
+        {
+            LoadUserControl<CartPanel>();
         }
     }
 }

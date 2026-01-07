@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Online_Ordering_System
 {
-    public partial class UserControl1 : UserControl
+    public partial class OrderPanel : UserControl
     {
-        public UserControl1()
+        public OrderPanel()
         {
             InitializeComponent();
         }
