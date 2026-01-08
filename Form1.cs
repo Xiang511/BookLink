@@ -96,7 +96,7 @@ namespace Online_Ordering_System
                 Form3 mainForm = new Form3();
                 globalVal.islogin = true;
                 globalVal.Username = username;
-                mainForm.Show();
+                //mainForm.Show();
                 this.Close();
             }
             else

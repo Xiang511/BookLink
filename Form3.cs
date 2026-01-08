@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 
 namespace Online_Ordering_System
@@ -83,19 +84,15 @@ namespace Online_Ordering_System
             globalVal.Username = string.Empty;
             globalVal.UserOrderCount = 0;
             globalVal.islogin = false;
-            this.Close();
-            Form1 loginForm = new Form1();
-            loginForm.Show();
+            toolStripLBlUserName.Text = "未登錄";
             MessageBox.Show("已登出！", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Form1 loginForm = new Form1();
+            loginForm.ShowDialog();
+            
 
         }
 
         
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void toolStrip2_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
@@ -105,10 +102,10 @@ namespace Online_Ordering_System
         private void toolStripLBlUserName_Click(object sender, EventArgs e)
         {
             Form Form1 = new Form1();
-            Form1.Show();
+            Form1.ShowDialog();
 
-            Form3 form3 = this;
-            form3.Hide();
+            //Form3 form3 = this;
+            //form3.Hide();
         }
 
         private void toolStrip2_ItemClicked_1(object sender, ToolStripItemClickedEventArgs e)
@@ -162,6 +159,24 @@ namespace Online_Ordering_System
                 MessageBox.Show("請先登入會員！", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 LoadUserControl<HomePanel>();
             }
+        }
+
+        private void Form3_Activated(object sender, EventArgs e)
+        {
+            if (globalVal.islogin) {
+                toolStripLBlUserName.Text = globalVal.Username;
+                toolStripLBlUserName.IsLink = false;
+                toolStripLblLogout.Visible = true;
+                toolStripLBlUserName.Enabled = false;
+            }
+            else
+            {
+                toolStripLBlUserName.Text = "未登錄";
+                toolStripLBlUserName.IsLink = true;
+                toolStripLBlUserName.Enabled = true;
+                toolStripLblLogout.Visible = false;
+            }
+
         }
     }
 }
