@@ -186,6 +186,16 @@
   <metadata name="toolStrip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>237, 17</value>
   </metadata>
+  <data name="toolStripLabel2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAEASURBVEhL7ZUxDoJAFEQ5hiUlR7C09CYcwdKSI1hSWlJSegSPYkmJM/xxIwZdwV212JdMQmb/
+        n+/+BMkSib+h7/sCuqeDch3HAQPqYdQ0lcrCguDc8h0NdLRHR6HycCCUKx2Q5ZBNOlnhUDBpZTng8fYD
+        ssKhXNLIcsBr7SjO4ItFv1x1lMGPrxHX61Ys4rxWCK4sf5JaZXHAAN7crR3E/wP5GbjZGjpAZ4i3pvhM
+        b6OyMCCwhOZSqn0+bLaMj5j3A9Cwtb4ROx0/hTVWOmKrYz9quLGS/TboGX1QZPtRPVn8qWOvRSwbfIL2
+        C8XeAcX6UX0wFOtH9cFQbCLxDbLsClvO992xpmBNAAAAAElFTkSuQmCC
+</value>
+  </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>63</value>
   </metadata>

@@ -209,10 +209,10 @@
             // toolStripLabel2
             // 
             this.toolStripLabel2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripLabel2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripLabel2.Image")));
             this.toolStripLabel2.Name = "toolStripLabel2";
             this.toolStripLabel2.Padding = new System.Windows.Forms.Padding(2);
-            this.toolStripLabel2.Size = new System.Drawing.Size(49, 24);
-            this.toolStripLabel2.Text = "狀態:";
+            this.toolStripLabel2.Size = new System.Drawing.Size(20, 24);
             // 
             // Form3
             // 
