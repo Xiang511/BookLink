@@ -16,5 +16,7 @@ namespace Online_Ordering_System
         public static bool islogin = false;
 
         public static int bannerIndex = 0;
+
+        public static string UserPhoto = "";
     }
 }

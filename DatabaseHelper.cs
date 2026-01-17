@@ -145,9 +145,7 @@ namespace Online_Ordering_System
                             // 喷靡Θ砞﹚办跑计
                             globalVal.Username = username;
                             
-                            // ミ更赣ㄏノ璹虫璸计
-                            LoadUserOrderCount(username);
-                            
+                           
                             return true;
                         }
                         
@@ -162,6 +160,11 @@ namespace Online_Ordering_System
                 return false;
             }
         }
+
+
+
+
+
 
         /// <summary>
         /// 更ㄏノ璹虫璸计
