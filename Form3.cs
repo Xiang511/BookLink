@@ -176,6 +176,20 @@ namespace Online_Ordering_System
             }
 
         }
+
+        private void toolStripLblProfile_Click(object sender, EventArgs e)
+        {
+            if (globalVal.islogin)
+            {
+                LoadUserControl<Profile>();
+            }
+            else
+            {
+                MessageBox.Show("請先登入會員！", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Form1 loginForm = new Form1();
+                loginForm.ShowDialog();
+            }
+        }
     }
 }
 
