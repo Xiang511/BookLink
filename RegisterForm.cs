@@ -204,7 +204,7 @@ namespace Online_Ordering_System
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "RegisterForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "µù¥U·s±b¸¹";
             this.Load += new System.EventHandler(this.RegisterForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
