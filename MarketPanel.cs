@@ -19,11 +19,9 @@ namespace Online_Ordering_System
             InitializeComponent();
         }
 
-        private void MarketPanel_Load(object sender, EventArgs e)
+
+        public void GetProduct()
         {
-
-
-
             try
             {
 
@@ -61,8 +59,31 @@ namespace Online_Ordering_System
             }
         }
 
-        public void loadProducts()
+        public void ClearProducts()
         {
+            ProductInfo.productID.Clear();
+            ProductInfo.productName.Clear();
+            ProductInfo.productPrice.Clear();
+            ProductInfo.productQuantity.Clear();
+            ProductInfo.productImage.Clear();
+            imageList1.Images.Clear();
+            listView1.Items.Clear();
+        }
+
+        private void MarketPanel_Load(object sender, EventArgs e)
+        {   
+
+
+                ClearProducts();
+                GetProduct();
+                
+           
+        }
+
+        public void loadProducts()
+        {   
+        
+
             listView1.View = View.LargeIcon;
             imageList1.ImageSize = new Size(120, 160);
             listView1.LargeImageList = imageList1;
