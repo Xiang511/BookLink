@@ -77,6 +77,7 @@ namespace Online_Ordering_System
             DatabaseHelper.clearUserProfile();
             globalVal.islogin = false;
             toolStripLBlUserName.Text = "Login";
+            toolStripLBlUserName.Enabled = true; 
             pictureBox1.Image = null;
             MessageBox.Show("已登出！", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
             LoadUserControl<HomePanel>();
