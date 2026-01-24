@@ -40,11 +40,11 @@ namespace Online_Ordering_System
 
         }
 
-        public static string strCategoryFilter = "SELECT productid,productname, price, stock,image FROM Product";
+
 
         public void GetProduct()
         {
-            
+
             try
             {
 
@@ -94,10 +94,21 @@ namespace Online_Ordering_System
         }
 
         private void MarketPanel_Load(object sender, EventArgs e)
-        {   
-                ClearProducts();
-                GetProduct();           
+        {
+            ClearProducts();
+            GetProduct();
         }
+
+
+        public void ResetCategoryFilter()
+        {
+            txtSearch.Text = "";
+            radioButton1.Checked = false;
+            radioButton2.Checked = false;
+            radioButton3.Checked = false;
+        }
+
+        public static string strCategoryFilter = "SELECT productid,productname, price, stock,image FROM Product";
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -105,6 +116,8 @@ namespace Online_Ordering_System
             strCategoryFilter = CategoryStr;
             ClearProducts();
             GetProduct();
+            ResetCategoryFilter();
+
         }
 
         private void btnCategroy1_Click(object sender, EventArgs e)
@@ -113,6 +126,7 @@ namespace Online_Ordering_System
             strCategoryFilter = CategoryStr;
             ClearProducts();
             GetProduct();
+            ResetCategoryFilter();
         }
 
         private void btnCategroy2_Click(object sender, EventArgs e)
@@ -121,8 +135,66 @@ namespace Online_Ordering_System
             strCategoryFilter = CategoryStr;
             ClearProducts();
             GetProduct();
+            ResetCategoryFilter();
         }
 
+        public static string strSearchFilter = "";
 
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            ClearProducts();
+            string searchTerm = txtSearch.Text.Trim();
+
+
+
+            string strSearch = " SELECT productid,productname, price, stock,image FROM Product where productname LIKE @searchTerm ";
+
+            if ((radioButton1.Checked))
+            {
+                strSearch = " SELECT productid,productname, price, stock,image FROM Product where productname LIKE @searchTerm ";
+            }
+            else if ((radioButton2.Checked))
+            {
+                strSearch = " SELECT productid,productname, price, stock,image FROM Product where publisher LIKE @searchTerm ";
+            }
+            else if ((radioButton3.Checked))
+            {
+                strSearch = " SELECT productid,productname, price, stock,image FROM Product where ISBN LIKE @searchTerm ";
+            }
+
+
+            try
+            {
+                SqlConnection conn = DatabaseHelper.GetConnection();
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(strSearch, conn);
+                cmd.Parameters.AddWithValue("@searchTerm", "%" + searchTerm + "%");
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    ProductInfo.productID.Add((int)reader["productid"]);
+                    ProductInfo.productName.Add((string)reader["productname"]);
+                    ProductInfo.productPrice.Add((decimal)reader["price"]);
+                    ProductInfo.productQuantity.Add((int)reader["stock"]);
+                    ProductInfo.productImage.Add((string)reader["image"]);
+                    string imageName = (string)reader["image"];
+                    string ImageDir = globalVal.strImageDir + @"/" + imageName;
+                    Console.WriteLine(ImageDir);
+                    FileStream fs = File.OpenRead(ImageDir);
+                    Image ProductImg = Image.FromStream(fs);
+                    imageList1.Images.Add(ProductImg);
+                    fs.Close();
+                }
+                reader.Close();
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading products: " + ex.Message);
+            }
+
+
+            loadProducts();
+        }
     }
 }
