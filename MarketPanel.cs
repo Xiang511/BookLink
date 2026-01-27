@@ -27,16 +27,17 @@ namespace Online_Ordering_System
             listView1.View = View.LargeIcon;
             imageList1.ImageSize = new Size(120, 160);
             listView1.LargeImageList = imageList1;
-            for (int i = 0; i < ProductInfo.productID.Count; i++)
+            foreach(ProductInfo item in ProductList.InfoList)
             {
-                ListViewItem item = new ListViewItem();
-                item.ImageIndex = i;
-                item.Text = ProductInfo.productName[i];
-                item.Font = new Font("微軟正黑體", 12, FontStyle.Bold);
-                Console.WriteLine(item.Text);
+                ListViewItem Lvitem = new ListViewItem();
 
-                listView1.Items.Add(item);
+                Lvitem.ImageIndex = item.productID-1;
+                Lvitem.Text = item.productName;
+                Lvitem.Font = new Font("微軟正黑體", 12, FontStyle.Bold);
+                //Console.WriteLine(Lvitem.Text);
+                listView1.Items.Add(Lvitem);
             }
+
 
         }
 
@@ -54,15 +55,18 @@ namespace Online_Ordering_System
                 SqlCommand cmd = new SqlCommand(query, conn);
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
-                {
-                    ProductInfo.productID.Add((int)reader["productid"]);
-                    ProductInfo.productName.Add((string)reader["productname"]);
-                    ProductInfo.productPrice.Add((decimal)reader["price"]);
-                    ProductInfo.productQuantity.Add((int)reader["stock"]);
-                    ProductInfo.productImage.Add((string)reader["image"]);
+                {   
+                    ProductInfo info = new ProductInfo();
+
+                    info.productID = ((int)reader["productid"]);
+                    info.productName = ((string)reader["productname"]);
+                    info.productPrice = ((decimal)reader["price"]);
+                    info.productQuantity = ((int)reader["stock"]);
+                    info.productImage = ((string)reader["image"]);
+                    ProductList.InfoList.Add(info);
+
                     string imageName = (string)reader["image"];
                     string ImageDir = globalVal.strImageDir + @"/" + imageName;
-                    Console.WriteLine(ImageDir);
                     FileStream fs = File.OpenRead(ImageDir);
                     Image ProductImg = Image.FromStream(fs);
                     imageList1.Images.Add(ProductImg);
@@ -74,6 +78,13 @@ namespace Online_Ordering_System
 
 
                 loadProducts();
+
+
+                //foreach (ProductInfo item in ProductList.InfoList)
+                //{
+                //    Console.WriteLine($"{item.productID}, {item.productName},{item.productPrice}\n");
+                //}
+
             }
             catch (Exception ex)
             {
@@ -84,12 +95,8 @@ namespace Online_Ordering_System
 
         public void ClearProducts()
         {
-            ProductInfo.productID.Clear();
-            ProductInfo.productName.Clear();
-            ProductInfo.productPrice.Clear();
-            ProductInfo.productQuantity.Clear();
-            ProductInfo.productImage.Clear();
-            imageList1.Images.Clear();
+            ProductList.InfoList.Clear();
+            //imageList1.Images.Clear();
             listView1.Items.Clear();
         }
 
@@ -176,14 +183,19 @@ namespace Online_Ordering_System
                     SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
-                        ProductInfo.productID.Add((int)reader["productid"]);
-                        ProductInfo.productName.Add((string)reader["productname"]);
-                        ProductInfo.productPrice.Add((decimal)reader["price"]);
-                        ProductInfo.productQuantity.Add((int)reader["stock"]);
-                        ProductInfo.productImage.Add((string)reader["image"]);
+                        ProductInfo info = new ProductInfo();
+
+                        info.productID = ((int)reader["productid"]);
+                        info.productName = ((string)reader["productname"]);
+                        info.productPrice = ((decimal)reader["price"]);
+                        info.productQuantity = ((int)reader["stock"]);
+                        info.productImage = ((string)reader["image"]);
+                        ProductList.InfoList.Add(info);
+
                         string imageName = (string)reader["image"];
                         string ImageDir = globalVal.strImageDir + @"/" + imageName;
-                        Console.WriteLine(ImageDir);
+
+
                         FileStream fs = File.OpenRead(ImageDir);
                         Image ProductImg = Image.FromStream(fs);
                         imageList1.Images.Add(ProductImg);
@@ -229,7 +241,7 @@ namespace Online_Ordering_System
             productDetailForm.ShowDialog();
 
 
-            globalVal.LoadId = ProductInfo.productID[listView1.FocusedItem.Index];
+           
             
         }
     }
