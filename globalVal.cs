@@ -33,11 +33,16 @@ namespace Online_Ordering_System
     }
 
     public class ProductInfo
+    {        
+        public int productID { get; set; }
+        public string productName { get; set; }
+        public decimal productPrice { get; set; }
+        public int productQuantity { get; set; }
+        public string productImage { get; set; }
+    }
+
+    public class ProductList
     {
-        public static List<int> productID = new List<int>();
-        public static List<string> productName = new List<string>();
-        public static List<decimal> productPrice = new List<decimal>();
-        public static List<int> productQuantity = new List<int>();
-        public static List<string> productImage = new List<string>();
+        public static List<ProductInfo> InfoList = new List<ProductInfo>();
     }
 }
