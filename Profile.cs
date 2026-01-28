@@ -62,10 +62,10 @@ namespace Online_Ordering_System
                     level = "一般會員";
                     break;
                 case 3:
-                    level = " ";
+                    level = "停權";
                     break;
                 default:
-                    level = " ";
+                    level = "2";
                     break;
             }
             LblLv.Text = level;

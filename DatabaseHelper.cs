@@ -48,21 +48,34 @@ namespace Online_Ordering_System
                 using (SqlConnection conn = GetConnection())
                 {
                     conn.Open();
-                    string query = "SELECT COUNT(*) FROM [User] WHERE username = @Username AND password = @Password";
+                    string query = "SELECT * FROM [User] WHERE username = @Username AND password = @Password";
                     
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@Username", username);
                         cmd.Parameters.AddWithValue("@Password", password);
                         
-                        int count = (int)cmd.ExecuteScalar();
-                        
-                        if (count > 0)
+                        SqlDataReader reader = cmd.ExecuteReader();
+
+                        if (reader.Read())
                         {
                             // 驗證成功，設定全域變數
                             UserProfile.Username = username;
-                            
-                           
+                            UserProfile.Role = (int)reader["Role"];
+                            if(UserProfile.Role == 3)
+                            {
+                                MessageBox.Show("此帳號已被停用，請聯絡管理員。", "帳號停用", 
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                reader.Close();
+                                return false;
+                            }
+                            if (UserProfile.Role == 4)
+                            {
+                                MessageBox.Show("帳號審核中，請耐心等待。", "審核中",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                reader.Close();
+                                return false;
+                            }
                             return true;
                         }
                         
