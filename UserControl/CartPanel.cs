@@ -231,6 +231,14 @@ namespace Online_Ordering_System
                     }
                     MessageBox.Show($"訂單編號 {newOrderId} 已成功建立！");
                 }
+                listView1.Clear();
+                gbtool.Visible = false;
+                CartList.InfoList.Clear();
+                Lbltotalmount.Text = "0";
+                Lblshipvia.Text = "0";
+                Lblprice.Text = "0";
+                Lblitemcount.Text = "共 0 件商品";
+
             }
             else
             {
