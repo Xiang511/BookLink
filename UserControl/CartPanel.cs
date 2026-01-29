@@ -68,7 +68,7 @@ namespace Online_Ordering_System
                 listView1.Columns.Add("商品名稱", 120);
                 listView1.Columns.Add("單價", 110);
                 listView1.Columns.Add("數量", 60);
-                listView1.Columns.Add("小計", 110);
+                listView1.Columns.Add("小計", 150);
 
                 foreach (CartInfo item in CartList.InfoList)
                 {
