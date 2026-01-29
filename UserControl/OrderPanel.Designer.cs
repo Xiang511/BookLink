@@ -56,7 +56,7 @@
             this.materialCard2.Controls.Add(this.listView2);
             this.materialCard2.Depth = 0;
             this.materialCard2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialCard2.Location = new System.Drawing.Point(425, 125);
+            this.materialCard2.Location = new System.Drawing.Point(450, 125);
             this.materialCard2.Margin = new System.Windows.Forms.Padding(14);
             this.materialCard2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard2.Name = "materialCard2";
@@ -70,7 +70,7 @@
             this.listView2.HideSelection = false;
             this.listView2.Location = new System.Drawing.Point(1, 0);
             this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(544, 628);
+            this.listView2.Size = new System.Drawing.Size(544, 550);
             this.listView2.TabIndex = 0;
             this.listView2.UseCompatibleStateImageBehavior = false;
             // 
@@ -98,7 +98,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(402, 550);
+            this.dataGridView1.Size = new System.Drawing.Size(415, 550);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -147,40 +147,44 @@
             this.materialCard3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard3.Name = "materialCard3";
             this.materialCard3.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard3.Size = new System.Drawing.Size(395, 550);
+            this.materialCard3.Size = new System.Drawing.Size(416, 550);
             this.materialCard3.TabIndex = 6;
             // 
             // dataGridViewTextBoxColumn1
             // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.dataGridViewTextBoxColumn1.DataPropertyName = "orderid";
-            this.dataGridViewTextBoxColumn1.HeaderText = "orderid";
+            this.dataGridViewTextBoxColumn1.HeaderText = "編號";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 70;
+            this.dataGridViewTextBoxColumn1.Width = 54;
             // 
             // dataGridViewTextBoxColumn2
             // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.dataGridViewTextBoxColumn2.DataPropertyName = "orderdate";
-            this.dataGridViewTextBoxColumn2.HeaderText = "orderdate";
+            this.dataGridViewTextBoxColumn2.HeaderText = "日期";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 150;
+            this.dataGridViewTextBoxColumn2.Width = 54;
             // 
             // dataGridViewTextBoxColumn3
             // 
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.dataGridViewTextBoxColumn3.DataPropertyName = "status";
-            this.dataGridViewTextBoxColumn3.HeaderText = "status";
+            this.dataGridViewTextBoxColumn3.HeaderText = "狀態";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 50;
+            this.dataGridViewTextBoxColumn3.Width = 54;
             // 
             // dataGridViewTextBoxColumn4
             // 
+            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.dataGridViewTextBoxColumn4.DataPropertyName = "totalamount";
-            this.dataGridViewTextBoxColumn4.HeaderText = "totalamount";
+            this.dataGridViewTextBoxColumn4.HeaderText = "金額";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 90;
+            this.dataGridViewTextBoxColumn4.Width = 54;
             // 
             // OrderPanel
             // 

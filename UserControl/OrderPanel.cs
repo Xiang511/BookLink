@@ -19,11 +19,44 @@ namespace Online_Ordering_System
             InitializeComponent();
         }
 
+        public void ApplyAntdStyle(DataGridView dgv)
+        {
+            // 基礎顏色
+            // 基礎顏色修正
+            Color borderColor = Color.FromArgb(240, 240, 240);
+            Color headerBg = Color.White;
+            Color textColor = Color.FromArgb(217, 0, 0, 0); // 修正後的深灰色
+
+            dgv.BackgroundColor = Color.White;
+            dgv.BorderStyle = BorderStyle.None;
+            dgv.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgv.GridColor = borderColor;
+
+            // 表頭樣式優化
+            dgv.EnableHeadersVisualStyles = false;
+            dgv.ColumnHeadersHeight = 45; // 稍微加高更有呼吸感
+            dgv.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgv.ColumnHeadersDefaultCellStyle.BackColor = headerBg;
+            dgv.ColumnHeadersDefaultCellStyle.ForeColor = textColor;
+            dgv.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10F, FontStyle.Bold); // AntD 常用字體
+            dgv.ColumnHeadersDefaultCellStyle.SelectionBackColor = headerBg;
+
+            // 行樣式優化
+            dgv.RowTemplate.Height = 45;
+            dgv.RowHeadersVisible = false; // 隱藏最左側的空白列，這是 AntD 的關鍵
+            dgv.DefaultCellStyle.SelectionBackColor = Color.FromArgb(230, 247, 255);
+            dgv.DefaultCellStyle.SelectionForeColor = textColor;
+            dgv.DefaultCellStyle.Font = new Font("Segoe UI", 9F);
+            dgv.DefaultCellStyle.Padding = new Padding(10, 0, 10, 0); // 增加文字左右間距
+
+            dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        }
+
         void LoadAllMemberDataTodataGridView1()
         {
             SqlConnection con = DatabaseHelper.GetConnection();
             con.Open();
-            string strsql = "select * from orders where userid = @UserId";
+            string strsql = "select * from orders o where userid = @UserId order by o.orderid  desc";
             SqlCommand cmd = new SqlCommand(strsql, con);
             cmd.Parameters.AddWithValue("@UserId", UserProfile.UserId);
             SqlDataReader reader = cmd.ExecuteReader();
@@ -45,7 +78,7 @@ namespace Online_Ordering_System
 
             SqlConnection con = DatabaseHelper.GetConnection();
             con.Open();
-            string strsql = "select * from Orders o inner join OrderDetail od on o.orderid = od.orderid inner join product p on od.productid = p.productid where o.orderid = @OrderId and o.userid = @UserId";
+            string strsql = "select * from Orders o inner join OrderDetail od on o.orderid = od.orderid inner join product p on od.productid = p.productid where o.orderid = @OrderId and o.userid = @UserId ";
             SqlCommand cmd = new SqlCommand(strsql, con);
             cmd.Parameters.AddWithValue("@UserId", UserProfile.UserId);
             cmd.Parameters.AddWithValue("@OrderId", orderid);
@@ -113,6 +146,7 @@ namespace Online_Ordering_System
         private void OrderPanel_Load(object sender, EventArgs e)
         {
             LoadAllMemberDataTodataGridView1();
+            ApplyAntdStyle(dataGridView1);
 
         }
 
