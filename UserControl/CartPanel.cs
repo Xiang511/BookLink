@@ -128,7 +128,7 @@ namespace Online_Ordering_System
             Lblitemcount.Text = $"共 {CartList.InfoList.Count.ToString()} 件商品";
             Lblprice.Text = $"總價: {(decimal)price()}";
             Lblshipvia.Text = $"運費: {(CartList.InfoList.Count > 0 && price() < 1000 ? 60 : 0)}";
-            Lblitemcount.Text = $"總計: {(decimal)CalculateTotalPrice()}";
+            Lbltotalmount.Text = $"總計: {(decimal)CalculateTotalPrice()}";
             Console.WriteLine(Lblprice.Text);
             gbtool.Visible = true;
             Int32.TryParse(listView1.SelectedItems[0].SubItems[3].Text, out int quantity);

@@ -52,6 +52,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.gbtool = new System.Windows.Forms.GroupBox();
+            this.materialCard1 = new MaterialSkin.Controls.MaterialCard();
             this.materialCard2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.gbtool.SuspendLayout();
@@ -258,7 +259,7 @@
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(32, 134);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(488, 478);
+            this.listView1.Size = new System.Drawing.Size(481, 478);
             this.listView1.TabIndex = 7;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.ItemActivate += new System.EventHandler(this.listView1_ItemActivate);
@@ -271,9 +272,9 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(2, 8);
+            this.numericUpDown1.Location = new System.Drawing.Point(2, 9);
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(79, 22);
+            this.numericUpDown1.Size = new System.Drawing.Size(71, 22);
             this.numericUpDown1.TabIndex = 8;
             this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -283,7 +284,7 @@
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(286, 6);
+            this.button3.Location = new System.Drawing.Point(278, 7);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(180, 24);
             this.button3.TabIndex = 10;
@@ -297,7 +298,7 @@
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(87, 6);
+            this.button4.Location = new System.Drawing.Point(79, 7);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(193, 24);
             this.button4.TabIndex = 11;
@@ -311,6 +312,7 @@
             this.gbtool.Controls.Add(this.button4);
             this.gbtool.Controls.Add(this.numericUpDown1);
             this.gbtool.Controls.Add(this.button3);
+            this.gbtool.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.gbtool.Location = new System.Drawing.Point(47, 572);
             this.gbtool.Name = "gbtool";
             this.gbtool.Size = new System.Drawing.Size(464, 31);
@@ -318,16 +320,30 @@
             this.gbtool.TabStop = false;
             this.gbtool.Visible = false;
             // 
+            // materialCard1
+            // 
+            this.materialCard1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard1.Depth = 0;
+            this.materialCard1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialCard1.Location = new System.Drawing.Point(32, 134);
+            this.materialCard1.Margin = new System.Windows.Forms.Padding(14);
+            this.materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCard1.Name = "materialCard1";
+            this.materialCard1.Padding = new System.Windows.Forms.Padding(14);
+            this.materialCard1.Size = new System.Drawing.Size(481, 478);
+            this.materialCard1.TabIndex = 13;
+            // 
             // CartPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.Controls.Add(this.gbtool);
-            this.Controls.Add(this.listView1);
             this.Controls.Add(this.materialCard2);
             this.Controls.Add(this.Lblitemcount);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.materialCard1);
             this.Name = "CartPanel";
             this.Size = new System.Drawing.Size(953, 641);
             this.Load += new System.EventHandler(this.CartPanel_Load);
@@ -364,5 +380,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.GroupBox gbtool;
+        private MaterialSkin.Controls.MaterialCard materialCard1;
     }
 }
