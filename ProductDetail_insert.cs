@@ -24,6 +24,7 @@ namespace Online_Ordering_System
         {   
             CBStauts.Items.Add("上架中");
             CBStauts.Items.Add("已下架");
+            btndel.Visible = true;
 
 
             if (globalVal.LoadId > 0)
@@ -58,7 +59,8 @@ namespace Online_Ordering_System
         private void BtnAddToCart_Click(object sender, EventArgs e)
         {
             if (globalVal.LoadId > 0)//修改商品
-            {
+            {   
+
                 if (txtBookName.Text != "" && txtcategory.Text != "" && txtPrice.Text != "" && txtStock.Text != "" && txtdescription.Text != "" && txtISBN.Text != "" && txtPublisher.Text != "" && pictureBox1.Image != null)
 
                 {
@@ -219,6 +221,26 @@ namespace Online_Ordering_System
                     MessageBox.Show($"儲存失敗：{ex.Message}");
                 }
             }
+        }
+
+        private void btndel_Click(object sender, EventArgs e)
+        {
+            SqlConnection connection = DatabaseHelper.GetConnection();
+            connection.Open();
+            string query = "DELETE FROM Product WHERE productid = @LoadId";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@LoadId", globalVal.LoadId);
+            command.ExecuteNonQuery();
+            connection.Close();
+            MessageBox.Show("商品刪除成功");
+            this.Close();
+            // 重新載入商品列表
+            Form3 form3 = Application.OpenForms.OfType<Form3>().FirstOrDefault();
+            if (form3 != null)
+            {
+                form3.LoadUserControl<MarketPanel>();
+            }
+
         }
     }
 }

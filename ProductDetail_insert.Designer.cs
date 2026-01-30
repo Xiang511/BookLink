@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.materialCard3 = new MaterialSkin.Controls.MaterialCard();
+            this.CBStauts = new System.Windows.Forms.ComboBox();
             this.txtPublisher = new System.Windows.Forms.TextBox();
             this.txtISBN = new System.Windows.Forms.TextBox();
             this.txtcategory = new System.Windows.Forms.TextBox();
@@ -50,7 +51,7 @@
             this.LblBookName = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.CBStauts = new System.Windows.Forms.ComboBox();
+            this.btndel = new System.Windows.Forms.Button();
             this.materialCard3.SuspendLayout();
             this.materialCard2.SuspendLayout();
             this.materialCard1.SuspendLayout();
@@ -77,6 +78,14 @@
             this.materialCard3.Padding = new System.Windows.Forms.Padding(14);
             this.materialCard3.Size = new System.Drawing.Size(351, 242);
             this.materialCard3.TabIndex = 15;
+            // 
+            // CBStauts
+            // 
+            this.CBStauts.FormattingEnabled = true;
+            this.CBStauts.Location = new System.Drawing.Point(213, 14);
+            this.CBStauts.Name = "CBStauts";
+            this.CBStauts.Size = new System.Drawing.Size(121, 20);
+            this.CBStauts.TabIndex = 16;
             // 
             // txtPublisher
             // 
@@ -143,6 +152,7 @@
             // materialCard2
             // 
             this.materialCard2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard2.Controls.Add(this.btndel);
             this.materialCard2.Controls.Add(this.txtdescription);
             this.materialCard2.Controls.Add(this.label7);
             this.materialCard2.Depth = 0;
@@ -163,7 +173,7 @@
             this.txtdescription.Location = new System.Drawing.Point(17, 46);
             this.txtdescription.Multiline = true;
             this.txtdescription.Name = "txtdescription";
-            this.txtdescription.Size = new System.Drawing.Size(311, 281);
+            this.txtdescription.Size = new System.Drawing.Size(311, 260);
             this.txtdescription.TabIndex = 13;
             this.txtdescription.Text = "深入淺出學習 MSSQL 資料庫設計與優化";
             // 
@@ -300,13 +310,20 @@
             this.label10.TabIndex = 11;
             this.label10.Text = "剩餘數量:";
             // 
-            // CBStauts
+            // btndel
             // 
-            this.CBStauts.FormattingEnabled = true;
-            this.CBStauts.Location = new System.Drawing.Point(213, 14);
-            this.CBStauts.Name = "CBStauts";
-            this.CBStauts.Size = new System.Drawing.Size(121, 20);
-            this.CBStauts.TabIndex = 16;
+            this.btndel.BackColor = System.Drawing.Color.Red;
+            this.btndel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btndel.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btndel.ForeColor = System.Drawing.Color.White;
+            this.btndel.Location = new System.Drawing.Point(17, 331);
+            this.btndel.Name = "btndel";
+            this.btndel.Size = new System.Drawing.Size(317, 55);
+            this.btndel.TabIndex = 18;
+            this.btndel.Text = "刪除商品";
+            this.btndel.UseVisualStyleBackColor = false;
+            this.btndel.Visible = false;
+            this.btndel.Click += new System.EventHandler(this.btndel_Click);
             // 
             // ProductDetail_insert
             // 
@@ -356,5 +373,6 @@
         private System.Windows.Forms.TextBox txtBookName;
         private System.Windows.Forms.Button Btnimage;
         private System.Windows.Forms.ComboBox CBStauts;
+        private System.Windows.Forms.Button btndel;
     }
 }
