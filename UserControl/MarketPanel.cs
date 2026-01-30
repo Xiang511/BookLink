@@ -31,7 +31,7 @@ namespace Online_Ordering_System
             {
                 ListViewItem Lvitem = new ListViewItem();
 
-                Lvitem.ImageIndex = item.productID-1;
+                Lvitem.ImageKey = item.productID.ToString();
                 Lvitem.Text = item.productName;
                 Lvitem.Font = new Font("微軟正黑體", 12, FontStyle.Bold);
                 Lvitem.Tag = item.productID;
@@ -72,7 +72,7 @@ namespace Online_Ordering_System
                     string ImageDir = globalVal.strImageDir + @"/" + imageName;
                     FileStream fs = File.OpenRead(ImageDir);
                     Image ProductImg = Image.FromStream(fs);
-                    imageList1.Images.Add(ProductImg);
+                    imageList1.Images.Add(info.productID.ToString(), ProductImg);
                     fs.Close();
                 }
                 reader.Close();
@@ -107,6 +107,15 @@ namespace Online_Ordering_System
         {
             ClearProducts();
             GetProduct();
+
+            if(UserProfile.Role == 1)
+            {
+                btnInsert.Visible = true;
+            }
+            else
+            {
+                btnInsert.Visible = false;
+            }
         }
 
 
@@ -253,6 +262,15 @@ namespace Online_Ordering_System
       
 
 
+        }
+
+        private void btnInsert_Click(object sender, EventArgs e)
+        {
+          
+            globalVal.LoadId = 0;
+            globalVal.currentid = 0;
+            ProductDetail_insert productDetailForm_insert = new ProductDetail_insert();
+            productDetailForm_insert.ShowDialog();
         }
     }
 }

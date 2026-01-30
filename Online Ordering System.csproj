@@ -62,6 +62,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ProductDetail_insert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductDetail_insert.Designer.cs">
+      <DependentUpon>ProductDetail_insert.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\CartPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -130,6 +136,9 @@
     <Compile Include="RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ProductDetail_insert.resx">
+      <DependentUpon>ProductDetail_insert.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControl\CartPanel.resx">
       <DependentUpon>CartPanel.cs</DependentUpon>
     </EmbeddedResource>

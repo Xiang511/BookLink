@@ -44,6 +44,7 @@
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.btnInsert = new System.Windows.Forms.Button();
             this.materialCard1.SuspendLayout();
             this.materialCard2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -170,6 +171,7 @@
             // materialCard2
             // 
             this.materialCard2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard2.Controls.Add(this.btnInsert);
             this.materialCard2.Controls.Add(this.button2);
             this.materialCard2.Controls.Add(this.btnCategroy1);
             this.materialCard2.Controls.Add(this.btnCategroy2);
@@ -249,6 +251,21 @@
             this.radioButton1.Text = "書名";
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
+            // btnInsert
+            // 
+            this.btnInsert.BackColor = System.Drawing.Color.YellowGreen;
+            this.btnInsert.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInsert.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnInsert.ForeColor = System.Drawing.Color.White;
+            this.btnInsert.Location = new System.Drawing.Point(17, 357);
+            this.btnInsert.Name = "btnInsert";
+            this.btnInsert.Size = new System.Drawing.Size(70, 41);
+            this.btnInsert.TabIndex = 13;
+            this.btnInsert.Text = "新增";
+            this.btnInsert.UseVisualStyleBackColor = false;
+            this.btnInsert.Visible = false;
+            this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
+            // 
             // MarketPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -288,5 +305,6 @@
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.Button btnInsert;
     }
 }
