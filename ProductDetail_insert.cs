@@ -143,6 +143,12 @@ namespace Online_Ordering_System
                         con.Close();
                         MessageBox.Show("商品新增成功");
                         this.Close();
+
+                        Form3 form3 = Application.OpenForms.OfType<Form3>().FirstOrDefault();
+                        if (form3 != null)
+                        {
+                            form3.LoadUserControl<MarketPanel>();
+                        }
                     }
                     else
                     {
