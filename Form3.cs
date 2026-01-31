@@ -35,6 +35,8 @@ namespace Online_Ordering_System
             toolStripLblTitle.Paint += toolStripLblHome_Paint; // 註冊 Paint 事件
 
             LoadUserControl<HomePanel>();
+
+
         }
 
         private void toolStripLblHome_Paint(object sender, PaintEventArgs e)
@@ -163,7 +165,10 @@ namespace Online_Ordering_System
                 toolStripLblLogout.Visible = true;
                 toolStripLBlUserName.Enabled = false;
                 DatabaseHelper.GetUserProfile();
-                
+                if (UserProfile.Role == 1)
+                {
+                    toolStripReport.Visible = true;
+                }
                 LoadAvatarFromUrl();
 
             }

@@ -26,7 +26,7 @@ namespace Online_Ordering_System
         {
             // 設定 Segmented 選項
             segmented1.Items.Clear();
-            segmented1.Items.Add(new AntdUI.SegmentedItem { Text = "銷售趨勢" });
+            segmented1.Items.Add(new AntdUI.SegmentedItem { Text = "銷售報表" });
             segmented1.Items.Add(new AntdUI.SegmentedItem { Text = "產品排名" });
             segmented1.Items.Add(new AntdUI.SegmentedItem { Text = "顧客統計" });
             segmented1.SelectIndex = 0;
@@ -136,7 +136,7 @@ namespace Online_Ordering_System
 
                 switch (e.Value)
                 {
-                    case 0: // 銷售趨勢
+                    case 0: // 銷售報表
                         if (isChartMode)
                             LoadSalesTrendChart();
                         else
@@ -207,7 +207,7 @@ namespace Online_Ordering_System
         }
 
         /// <summary>
-        /// 載入銷售趨勢報表
+        /// 載入銷售報表報表
         /// </summary>
         private void LoadSalesTrendReport()
         {
@@ -240,7 +240,7 @@ namespace Online_Ordering_System
                         {
                             dgv.DataSource = dt;
                             FormatSalesTrendColumns();
-                            label2.Text = $"最近 30 天銷售趨勢 - 共 {dt.Rows.Count} 天有訂單記錄  ";
+                            label2.Text = $"最近 30 天銷售報表 - 共 {dt.Rows.Count} 天有訂單記錄  ";
                         }
                         else
                         {
@@ -251,7 +251,7 @@ namespace Online_Ordering_System
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"載入銷售趨勢報表失敗: {ex.Message}", "錯誤",
+                MessageBox.Show($"載入銷售報表報表失敗: {ex.Message}", "錯誤",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -372,7 +372,7 @@ namespace Online_Ordering_System
         #region 圖表模式
 
         /// <summary>
-        /// 載入銷售趨勢圖表（折線圖）
+        /// 載入銷售報表圖表（折線圖）
         /// </summary>
         private void LoadSalesTrendChart()
         {
@@ -403,7 +403,7 @@ namespace Online_Ordering_System
                             chart1.Titles.Clear();
                             chart1.Titles.Add(new Title
                             {
-                                Text = "銷售趨勢 (最近30天)",
+                                Text = "銷售報表 (最近30天)",
                                 Font = new Font("Segoe UI", 14F, FontStyle.Bold),
                                 ForeColor = Color.FromArgb(24, 144, 255)
                             });
@@ -450,7 +450,7 @@ namespace Online_Ordering_System
                             chart1.Series.Add(salesSeries);
                             chart1.Series.Add(orderSeries);
 
-                            label2.Text = $" 最近 30 天銷售趨勢圖表 - 共 {dt.Rows.Count} 天有訂單記錄  ";
+                            label2.Text = $" 最近 30 天銷售報表圖表 - 共 {dt.Rows.Count} 天有訂單記錄  ";
                         }
                         else
                         {
@@ -461,7 +461,7 @@ namespace Online_Ordering_System
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"載入銷售趨勢圖表失敗: {ex.Message}", "錯誤",
+                MessageBox.Show($"載入銷售報表圖表失敗: {ex.Message}", "錯誤",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -658,7 +658,7 @@ namespace Online_Ordering_System
         #endregion
 
         /// <summary>
-        /// 格式化銷售趨勢欄位
+        /// 格式化銷售報表欄位
         /// </summary>
         private void FormatSalesTrendColumns()
         {

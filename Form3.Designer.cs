@@ -35,6 +35,7 @@
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripLblCart = new System.Windows.Forms.ToolStripLabel();
             this.toolStripLblOrder = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripReport = new System.Windows.Forms.ToolStripLabel();
             this.toolStripLblProfile = new System.Windows.Forms.ToolStripLabel();
             this.toolStripLblLogout = new System.Windows.Forms.ToolStripLabel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -42,7 +43,6 @@
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.toolStripLBlUserName = new System.Windows.Forms.ToolStripLabel();
             this.avatar1 = new AntdUI.Avatar();
-            this.toolStripReport = new System.Windows.Forms.ToolStripLabel();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
@@ -148,6 +148,23 @@
             this.toolStripLblOrder.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.toolStripLblOrder.Click += new System.EventHandler(this.toolStripLblOrder_Click);
             // 
+            // toolStripReport
+            // 
+            this.toolStripReport.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.toolStripReport.Font = new System.Drawing.Font("Microsoft JhengHei UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.toolStripReport.ForeColor = System.Drawing.Color.AliceBlue;
+            this.toolStripReport.Image = ((System.Drawing.Image)(resources.GetObject("toolStripReport.Image")));
+            this.toolStripReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.toolStripReport.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripReport.Margin = new System.Windows.Forms.Padding(28, 0, 0, 0);
+            this.toolStripReport.Name = "toolStripReport";
+            this.toolStripReport.Padding = new System.Windows.Forms.Padding(10, 20, 10, 20);
+            this.toolStripReport.Size = new System.Drawing.Size(224, 70);
+            this.toolStripReport.Text = "Report";
+            this.toolStripReport.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.toolStripReport.Visible = false;
+            this.toolStripReport.Click += new System.EventHandler(this.toolStripReport_Click);
+            // 
             // toolStripLblProfile
             // 
             this.toolStripLblProfile.BackColor = System.Drawing.SystemColors.ButtonFace;
@@ -240,22 +257,6 @@
             this.avatar1.Size = new System.Drawing.Size(33, 33);
             this.avatar1.TabIndex = 5;
             this.avatar1.Text = "";
-            // 
-            // toolStripReport
-            // 
-            this.toolStripReport.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.toolStripReport.Font = new System.Drawing.Font("Microsoft JhengHei UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.toolStripReport.ForeColor = System.Drawing.Color.AliceBlue;
-            this.toolStripReport.Image = ((System.Drawing.Image)(resources.GetObject("toolStripReport.Image")));
-            this.toolStripReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.toolStripReport.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripReport.Margin = new System.Windows.Forms.Padding(28, 0, 0, 0);
-            this.toolStripReport.Name = "toolStripReport";
-            this.toolStripReport.Padding = new System.Windows.Forms.Padding(10, 20, 10, 20);
-            this.toolStripReport.Size = new System.Drawing.Size(224, 70);
-            this.toolStripReport.Text = "Report";
-            this.toolStripReport.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.toolStripReport.Click += new System.EventHandler(this.toolStripReport_Click);
             // 
             // Form3
             // 

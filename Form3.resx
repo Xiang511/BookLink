@@ -176,10 +176,10 @@
   </data>
   <data name="toolStripReport.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAB/SURBVEhL7ZZBCoAwDAT78z69xjCXkoaKRpQ2Ax66TLIeLFiS/WitVXmiqaz3QQyH9T54c/Ei
-        rMtiC96tYka7WaIstuBNRVHO+97dTx0UOCpEocUKR4VogWKisJcZgvffYjm+/3ERhWVD8DYvfgLrstiC
-        Fw7rfcT55mcvWYxSDmdEQOYl/RLwAAAAAElFTkSuQmCC
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAH9JREFUSEvt
+        lkEKgDAMBPvzPr3GMJeShopGlDYDHrpMsh4sWJL9aK1VeaKprPdBDIf1Pnhz8SKsy2IL3q1iRrtZoiy2
+        4E1FUc773t1PHRQ4KkShxQpHhWiBYqKwlxmC999iOb7/cRGFZUPwNi9+Auuy2IIXDut9xPnmZy9ZjFIO
+        Z0RA5iX9EvAAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="toolStripLblProfile.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
