@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -40,6 +41,23 @@ namespace Online_Ordering_System
 
         private void HomePanel_Load(object sender, EventArgs e)
         {
+            SqlConnection con = DatabaseHelper.GetConnection();
+            con.Open();
+            string query = "SELECT COUNT(*) FROM Product";
+            SqlCommand cmd = new SqlCommand(query, con);
+            int productCount = (int)cmd.ExecuteScalar();
+            label2.Text = productCount.ToString();
+
+            string query2 = "SELECT COUNT(*) FROM [Orders]";
+            cmd = new SqlCommand(query2, con);
+            int orderCount = (int)cmd.ExecuteScalar();
+            label7.Text = orderCount.ToString();
+
+            string query3 = "SELECT COUNT(*) FROM [User]";
+            cmd = new SqlCommand(query3, con);
+            int userCount = (int)cmd.ExecuteScalar();
+            label10.Text = userCount.ToString();
+            con.Close();
 
         }
     }
