@@ -129,13 +129,13 @@ namespace Online_Ordering_System
             radioButton3.Checked = false;
         }
 
-        public static string strCategoryFilter = "SELECT productid,productname, price, stock,image FROM Product where status = '上架中' ";
+        public static string strCategoryFilter = "SELECT productid,productname, price, stock,image FROM Product where status = '上架中' and isDel = 'false' ";
 
-        public static string strCategoryFilterDefault = "SELECT productid,productname, price, stock,image FROM Product where status = '上架中' ";
+        public static string strCategoryFilterDefault = "SELECT productid,productname, price, stock,image FROM Product where status = '上架中' and isDel = 'false' ";
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string CategoryStr = " SELECT productid,productname, price, stock,image FROM Product where status = '上架中'";
+            string CategoryStr = " SELECT productid,productname, price, stock,image FROM Product where status = '上架中' and isDel = 'false'";
             strCategoryFilter = CategoryStr;
             ClearProducts();
             GetProduct();
@@ -145,7 +145,7 @@ namespace Online_Ordering_System
 
         private void btnCategroy1_Click(object sender, EventArgs e)
         {
-            string CategoryStr = " SELECT productid,productname, price, stock,image FROM Product where categoryid = 1 and status = '上架中' ";
+            string CategoryStr = " SELECT productid,productname, price, stock,image FROM Product where categoryid = 1 and status = '上架中' and isDel = 'false'";
             strCategoryFilter = CategoryStr;
             ClearProducts();
             GetProduct();
@@ -155,7 +155,7 @@ namespace Online_Ordering_System
 
         private void btnCategroy2_Click(object sender, EventArgs e)
         {
-            string CategoryStr = " SELECT productid,productname, price, stock,image FROM Product where categoryid = 2 and status = '上架中'";
+            string CategoryStr = " SELECT productid,productname, price, stock,image FROM Product where categoryid = 2 and status = '上架中' and isDel = 'false' ";
             strCategoryFilter = CategoryStr;
             ClearProducts();
             GetProduct();
@@ -165,7 +165,7 @@ namespace Online_Ordering_System
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string CategoryStr = " SELECT productid,productname, price, stock,image FROM Product where status = '已下架'";
+            string CategoryStr = " SELECT productid,productname, price, stock,image FROM Product where status = '已下架' and isDel = 'false' ";
             strCategoryFilter = CategoryStr;
             ClearProducts();
             GetProduct();
@@ -185,19 +185,19 @@ namespace Online_Ordering_System
 
 
 
-                string strSearch = " SELECT productid,productname, price, stock,image FROM Product where productname LIKE @searchTerm where status = '上架中'";
+                string strSearch = " SELECT productid,productname, price, stock,image FROM Product where productname LIKE @searchTerm where status = '上架中' and isDel = 'false'";
 
                 if ((radioButton1.Checked))
                 {
-                    strSearch = " SELECT productid,productname, price, stock,image FROM Product where productname LIKE @searchTerm and  status = '上架中'";
+                    strSearch = " SELECT productid,productname, price, stock,image FROM Product where productname LIKE @searchTerm and  status = '上架中' and isDel = 'false'";
                 }
                 else if ((radioButton2.Checked))
                 {
-                    strSearch = " SELECT productid,productname, price, stock,image FROM Product where publisher LIKE @searchTerm and status = '上架中'";
+                    strSearch = " SELECT productid,productname, price, stock,image FROM Product where publisher LIKE @searchTerm and status = '上架中' and isDel = 'false'";
                 }
                 else if ((radioButton3.Checked))
                 {
-                    strSearch = " SELECT productid,productname, price, stock,image FROM Product where ISBN LIKE @searchTerm and status = '上架中'";
+                    strSearch = " SELECT productid,productname, price, stock,image FROM Product where ISBN LIKE @searchTerm and status = '上架中' and isDel = 'false'";
                 }
 
 

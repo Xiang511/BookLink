@@ -126,7 +126,7 @@ namespace Online_Ordering_System
 
                         SqlConnection con = DatabaseHelper.GetConnection();
                         con.Open();
-                        string query = "INSERT INTO Product (productname, categoryid, price, stock, description, ISBN, publisher,status,image) VALUES (@BookName, @Category, @Price, @Stock, @Description, @ISBN, @Publisher,@status,@image)";
+                        string query = "INSERT INTO Product (productname, categoryid, price, stock, description, ISBN, publisher,status,image,isDel) VALUES (@BookName, @Category, @Price, @Stock, @Description, @ISBN, @Publisher,@status,@image,0)";
                         SqlCommand cmd = new SqlCommand(query, con);
                         cmd.Parameters.AddWithValue("@BookName", txtBookName.Text);
                         cmd.Parameters.AddWithValue("@Category", category);
@@ -227,7 +227,7 @@ namespace Online_Ordering_System
         {
             SqlConnection connection = DatabaseHelper.GetConnection();
             connection.Open();
-            string query = "DELETE FROM Product WHERE productid = @LoadId";
+            string query = "UPDATE Product SET isDel = 1 WHERE productid = @LoadId";
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@LoadId", globalVal.LoadId);
             command.ExecuteNonQuery();
