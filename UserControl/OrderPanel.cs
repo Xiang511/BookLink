@@ -91,7 +91,12 @@ namespace Online_Ordering_System
 
             SqlConnection con = DatabaseHelper.GetConnection();
             con.Open();
-            string strsql = "select * from Orders o inner join OrderDetail od on o.orderid = od.orderid inner join product p on od.productid = p.productid where o.orderid = @OrderId and o.userid = @UserId ";
+            string strsql = "select * from Orders o inner join OrderDetail od on o.orderid = od.orderid inner join product p on od.productid = p.productid where o.orderid = @OrderId  ";
+
+            if(UserProfile.Role != 1)
+            {
+                strsql += " and o.userid = @UserId ";
+            }
 
             SqlCommand cmd = new SqlCommand(strsql, con);
             cmd.Parameters.AddWithValue("@UserId", UserProfile.UserId);
