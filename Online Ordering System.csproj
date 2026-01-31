@@ -49,6 +49,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
     <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -67,12 +68,6 @@
     </Compile>
     <Compile Include="ProductDetail_insert.Designer.cs">
       <DependentUpon>ProductDetail_insert.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControl\Reports.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControl\Reports.Designer.cs">
-      <DependentUpon>Reports.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControl\CartPanel.cs">
       <SubType>UserControl</SubType>
@@ -136,6 +131,12 @@
     </Compile>
     <Compile Include="RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\Reports.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\Reports.Designer.cs">
+      <DependentUpon>Reports.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="ProductDetail_insert.resx">
       <DependentUpon>ProductDetail_insert.cs</DependentUpon>

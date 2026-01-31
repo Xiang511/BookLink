@@ -1,4 +1,4 @@
-using AntdUI;
+ï»¿using AntdUI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,11 +9,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Online_Ordering_System
 {
     public partial class Reports : UserControl
     {
+        private bool isChartMode = false;
+
         public Reports()
         {
             InitializeComponent();
@@ -21,25 +24,73 @@ namespace Online_Ordering_System
 
         private void Reports_Load(object sender, EventArgs e)
         {
-            // ³]©w Segmented ¿ï¶µ
+            // è¨­å®š Segmented é¸é …
             segmented1.Items.Clear();
-            segmented1.Items.Add(new AntdUI.SegmentedItem { Text = "¾P°âÁÍ¶Õ" });
-            segmented1.Items.Add(new AntdUI.SegmentedItem { Text = "²£«~±Æ¦W" });
-            segmented1.Items.Add(new AntdUI.SegmentedItem { Text = "¥Î¤á²Î­p" });
+            segmented1.Items.Add(new AntdUI.SegmentedItem { Text = "éŠ·å”®è¶¨å‹¢" });
+            segmented1.Items.Add(new AntdUI.SegmentedItem { Text = "ç”¢å“æ’å" });
+            segmented1.Items.Add(new AntdUI.SegmentedItem { Text = "é¡§å®¢çµ±è¨ˆ" });
             segmented1.SelectIndex = 0;
 
-            // ³]©w DataGridView ¼Ë¦¡
+            // è¨­å®š DataGridView æ¨£å¼
             ConfigureDataGridView();
 
-            // ¸ü¤J²Î­p¥d¤ù
+            // åˆå§‹åŒ–åœ–è¡¨
+            InitializeChart();
+
+            // è¼‰å…¥çµ±è¨ˆå¡ç‰‡
             LoadCardInfo();
 
-            // ¸ü¤J¹w³]³øªí
+            // è¼‰å…¥é è¨­å ±è¡¨
             LoadSalesTrendReport();
         }
 
         /// <summary>
-        /// ³]©w DataGridView ¥~Æ[
+        /// åˆå§‹åŒ–åœ–è¡¨æ§ä»¶
+        /// </summary>
+        private void InitializeChart()
+        {
+            // éš±è—åœ–è¡¨ï¼Œé è¨­é¡¯ç¤ºè¡¨æ ¼
+            chart1.Visible = false;
+            chart1.BackColor = Color.White;
+            chart1.Dock = DockStyle.Fill;
+
+            // é…ç½® ChartArea
+            if (chart1.ChartAreas.Count > 0)
+            {
+                chart1.ChartAreas[0].BackColor = Color.White;
+                chart1.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.FromArgb(240, 240, 240);
+                chart1.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.FromArgb(240, 240, 240);
+                chart1.ChartAreas[0].AxisX.LabelStyle.Font = new Font("Segoe UI", 9F);
+                chart1.ChartAreas[0].AxisY.LabelStyle.Font = new Font("Segoe UI", 9F);
+            }
+
+            // é…ç½® Legend
+            if (chart1.Legends.Count > 0)
+            {
+                chart1.Legends[0].Font = new Font("Segoe UI", 10F);
+                chart1.Legends[0].Docking = Docking.Top;
+            }
+
+            // æ·»åŠ é›™æ“Šäº‹ä»¶åˆ‡æ›è¦–åœ–
+            chart1.DoubleClick += (s, e) => ToggleViewMode();
+            dgv.DoubleClick += (s, e) => ToggleViewMode();
+        }
+
+        /// <summary>
+        /// åˆ‡æ›è¦–åœ–æ¨¡å¼ï¼ˆè¡¨æ ¼/åœ–è¡¨ï¼‰
+        /// </summary>
+        private void ToggleViewMode()
+        {
+            isChartMode = !isChartMode;
+            dgv.Visible = !isChartMode;
+            chart1.Visible = isChartMode;
+
+            // é‡æ–°è¼‰å…¥ç•¶å‰å ±è¡¨
+            segmented1_SelectIndexChanged(this, new IntEventArgs(segmented1.SelectIndex));
+        }
+
+        /// <summary>
+        /// è¨­å®š DataGridView å¤–è§€
         /// </summary>
         private void ConfigureDataGridView()
         {
@@ -73,36 +124,47 @@ namespace Online_Ordering_System
         }
 
         /// <summary>
-        /// Segmented ¿ï¶µÅÜ§ó¨Æ¥ó
+        /// Segmented é¸é …è®Šæ›´äº‹ä»¶
         /// </summary>
         private void segmented1_SelectIndexChanged(object sender, IntEventArgs e)
         {
             try
             {
                 dgv.DataSource = null;
+                chart1.Series.Clear();
+                chart1.Titles.Clear();
 
                 switch (e.Value)
                 {
-                    case 0: // ¾P°âÁÍ¶Õ
-                        LoadSalesTrendReport();
+                    case 0: // éŠ·å”®è¶¨å‹¢
+                        if (isChartMode)
+                            LoadSalesTrendChart();
+                        else
+                            LoadSalesTrendReport();
                         break;
-                    case 1: // ²£«~±Æ¦W
-                        LoadProductRankingReport();
+                    case 1: // ç”¢å“æ’å
+                        if (isChartMode)
+                            LoadProductRankingChart();
+                        else
+                            LoadProductRankingReport();
                         break;
-                    case 2: // ¥Î¤á²Î­p
-                        LoadUserStatisticsReport();
+                    case 2: // ç”¨æˆ¶çµ±è¨ˆ
+                        if (isChartMode)
+                            LoadUserStatisticsChart();
+                        else
+                            LoadUserStatisticsReport();
                         break;
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"¸ü¤J³øªí¥¢±Ñ: {ex.Message}", "¿ù»~",
+                MessageBox.Show($"è¼‰å…¥å ±è¡¨å¤±æ•—: {ex.Message}", "éŒ¯èª¤",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         /// <summary>
-        /// ¸ü¤J²Î­p¥d¤ù¸ê°T
+        /// è¼‰å…¥çµ±è¨ˆå¡ç‰‡è³‡è¨Š
         /// </summary>
         void LoadCardInfo()
         {
@@ -112,7 +174,7 @@ namespace Online_Ordering_System
                 {
                     connection.Open();
 
-                    // ¾P°âÁ`ÃB
+                    // éŠ·å”®ç¸½é¡
                     string query1 = "SELECT ISNULL(SUM(totalamount), 0) FROM Orders";
                     using (SqlCommand cmd = new SqlCommand(query1, connection))
                     {
@@ -121,14 +183,14 @@ namespace Online_Ordering_System
                         label5.Text = totalSales.ToString("C0");
                     }
 
-                    // ­q³æÁ`¼Æ
+                    // è¨‚å–®ç¸½æ•¸
                     string query2 = "SELECT COUNT(orderid) FROM Orders";
                     using (SqlCommand cmd = new SqlCommand(query2, connection))
                     {
-                        label6.Text = cmd.ExecuteScalar().ToString() + " µ§";
+                        label6.Text = cmd.ExecuteScalar().ToString() + " ç­†";
                     }
 
-                    // ¥­§¡­q³æª÷ÃB
+                    // å¹³å‡è¨‚å–®é‡‘é¡
                     string query3 = "SELECT ISNULL(AVG(totalamount), 0) FROM Orders";
                     using (SqlCommand cmd = new SqlCommand(query3, connection))
                     {
@@ -140,12 +202,12 @@ namespace Online_Ordering_System
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"¸ü¤J¥d¤ù¸ê°T¥¢±Ñ: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"è¼‰å…¥å¡ç‰‡è³‡è¨Šå¤±æ•—: {ex.Message}");
             }
         }
 
         /// <summary>
-        /// ¸ü¤J¾P°âÁÍ¶Õ³øªí
+        /// è¼‰å…¥éŠ·å”®è¶¨å‹¢å ±è¡¨
         /// </summary>
         private void LoadSalesTrendReport()
         {
@@ -155,15 +217,15 @@ namespace Online_Ordering_System
                 {
                     conn.Open();
                     
-                    // Àò¨ú³Ìªñ 30 ¤Ñªº¾P°â¼Æ¾Ú
+                    // ç²å–æœ€è¿‘ 30 å¤©çš„éŠ·å”®æ•¸æ“š
                     string query = @"
                         SELECT 
-                            CONVERT(DATE, orderdate) AS '¤é´Á',
-                            COUNT(orderid) AS '­q³æ¼Æ¶q',
-                            SUM(totalamount) AS '¾P°âÁ`ÃB',
-                            AVG(totalamount) AS '¥­§¡ª÷ÃB',
-                            MIN(totalamount) AS '³Ì¤pª÷ÃB',
-                            MAX(totalamount) AS '³Ì¤jª÷ÃB'
+                            CONVERT(DATE, orderdate) AS 'æ—¥æœŸ',
+                            COUNT(orderid) AS 'è¨‚å–®æ•¸é‡',
+                            SUM(totalamount) AS 'éŠ·å”®ç¸½é¡',
+                            AVG(totalamount) AS 'å¹³å‡é‡‘é¡',
+                            MIN(totalamount) AS 'æœ€å°é‡‘é¡',
+                            MAX(totalamount) AS 'æœ€å¤§é‡‘é¡'
                         FROM Orders
                         WHERE orderdate >= DATEADD(DAY, -30, GETDATE())
                         GROUP BY CONVERT(DATE, orderdate)
@@ -178,25 +240,24 @@ namespace Online_Ordering_System
                         {
                             dgv.DataSource = dt;
                             FormatSalesTrendColumns();
-                            label2.Text = $"³Ìªñ 30 ¤Ñ¾P°âÁÍ¶Õ - ¦@ {dt.Rows.Count} ¤Ñ¦³­q³æ°O¿ı";
+                            label2.Text = $"æœ€è¿‘ 30 å¤©éŠ·å”®è¶¨å‹¢ - å…± {dt.Rows.Count} å¤©æœ‰è¨‚å–®è¨˜éŒ„  ";
                         }
                         else
                         {
-                            MessageBox.Show("³Ìªñ 30 ¤Ñ¨S¦³¾P°â¼Æ¾Ú", "´£¥Ü",
-                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            label2.Text = "æœ€è¿‘ 30 å¤©æ²’æœ‰éŠ·å”®æ•¸æ“š";
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"¸ü¤J¾P°âÁÍ¶Õ³øªí¥¢±Ñ: {ex.Message}", "¿ù»~",
+                MessageBox.Show($"è¼‰å…¥éŠ·å”®è¶¨å‹¢å ±è¡¨å¤±æ•—: {ex.Message}", "éŒ¯èª¤",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         /// <summary>
-        /// ¸ü¤J²£«~±Æ¦W³øªí
+        /// è¼‰å…¥ç”¢å“æ’åå ±è¡¨
         /// </summary>
         private void LoadProductRankingReport()
         {
@@ -208,14 +269,14 @@ namespace Online_Ordering_System
                     
                     string query = @"
                         SELECT 
-                            ROW_NUMBER() OVER (ORDER BY SUM(od.quantity) DESC) AS '±Æ¦W',
-                            p.productname AS '²£«~¦WºÙ',
-                            c.categoryname AS 'Ãş§O',
-                            COUNT(DISTINCT od.orderid) AS '­q³æ¦¸¼Æ',
-                            SUM(od.quantity) AS '¾P°â¼Æ¶q',
-                            SUM(od.quantity * od.price) AS '¾P°âª÷ÃB',
-                            AVG(od.price) AS '¥­§¡³æ»ù',
-                            p.stock AS '®w¦s'
+                            ROW_NUMBER() OVER (ORDER BY SUM(od.quantity) DESC) AS 'æ’å',
+                            p.productname AS 'ç”¢å“åç¨±',
+                            c.categoryname AS 'é¡åˆ¥',
+                            COUNT(DISTINCT od.orderid) AS 'è¨‚å–®æ¬¡æ•¸',
+                            SUM(od.quantity) AS 'éŠ·å”®æ•¸é‡',
+                            SUM(od.quantity * od.price) AS 'éŠ·å”®é‡‘é¡',
+                            AVG(od.price) AS 'å¹³å‡å–®åƒ¹',
+                            p.stock AS 'åº«å­˜'
                         FROM OrderDetail od
                         INNER JOIN Product p ON od.productid = p.productid
                         INNER JOIN Category c ON p.categoryid = c.categoryid
@@ -232,34 +293,33 @@ namespace Online_Ordering_System
                             dgv.DataSource = dt;
                             FormatProductRankingColumns();
                             
-                            // ­pºâ²Î­p¸ê°T
+                            // è¨ˆç®—çµ±è¨ˆè³‡è¨Š
                             decimal totalSales = 0;
                             int totalQuantity = 0;
                             foreach (DataRow row in dt.Rows)
                             {
-                                totalSales += Convert.ToDecimal(row["¾P°âª÷ÃB"]);
-                                totalQuantity += Convert.ToInt32(row["¾P°â¼Æ¶q"]);
+                                totalSales += Convert.ToDecimal(row["éŠ·å”®é‡‘é¡"]);
+                                totalQuantity += Convert.ToInt32(row["éŠ·å”®æ•¸é‡"]);
                             }
                             
-                            label2.Text = $"²£«~¾P°â±Æ¦W - ¦@ {dt.Rows.Count} ­Ó²£«~ | Á`¾P¶q: {totalQuantity} ¥ó | Á`ª÷ÃB: {totalSales:C0}";
+                            label2.Text = $"ç”¢å“éŠ·å”®æ’å - å…± {dt.Rows.Count} å€‹ç”¢å“ | ç¸½éŠ·é‡: {totalQuantity} ä»¶  ";
                         }
                         else
                         {
-                            MessageBox.Show("¼ÈµL²£«~¾P°â¼Æ¾Ú", "´£¥Ü",
-                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            label2.Text = "æš«ç„¡ç”¢å“éŠ·å”®æ•¸æ“š";
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"¸ü¤J²£«~±Æ¦W³øªí¥¢±Ñ: {ex.Message}", "¿ù»~",
+                MessageBox.Show($"è¼‰å…¥ç”¢å“æ’åå ±è¡¨å¤±æ•—: {ex.Message}", "éŒ¯èª¤",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         /// <summary>
-        /// ¸ü¤J¥Î¤á²Î­p³øªí
+        /// è¼‰å…¥ç”¨æˆ¶çµ±è¨ˆå ±è¡¨
         /// </summary>
         private void LoadUserStatisticsReport()
         {
@@ -271,14 +331,14 @@ namespace Online_Ordering_System
                     
                     string query = @"
                         SELECT 
-                            u.username AS '¥Î¤á¦WºÙ',
-                            u.email AS '¹q¤l¶l¥ó',
-                            u.phone AS '¹q¸Ü',
-                            CONVERT(VARCHAR(10), u.createdate, 120) AS 'µù¥U¤é´Á',
-                            COUNT(o.orderid) AS '­q³æÁ`¼Æ',
-                            ISNULL(SUM(o.totalamount), 0) AS '®ø¶OÁ`ÃB',
-                            ISNULL(AVG(o.totalamount), 0) AS '¥­§¡®ø¶O',
-                            CONVERT(VARCHAR(10), MAX(o.orderdate), 120) AS '³Ì«á­qÁÊ'
+                            u.username AS 'ç”¨æˆ¶åç¨±',
+                            u.email AS 'é›»å­éƒµä»¶',
+                            u.phone AS 'é›»è©±',
+                            CONVERT(VARCHAR(10), u.createdate, 120) AS 'è¨»å†Šæ—¥æœŸ',
+                            COUNT(o.orderid) AS 'è¨‚å–®ç¸½æ•¸',
+                            ISNULL(SUM(o.totalamount), 0) AS 'æ¶ˆè²»ç¸½é¡',
+                            ISNULL(AVG(o.totalamount), 0) AS 'å¹³å‡æ¶ˆè²»',
+                            CONVERT(VARCHAR(10), MAX(o.orderdate), 120) AS 'æœ€å¾Œè¨‚è³¼'
                         FROM [User] u
                         LEFT JOIN Orders o ON u.userid = o.userid
                         GROUP BY u.username, u.email, u.phone, u.createdate
@@ -293,25 +353,312 @@ namespace Online_Ordering_System
                         {
                             dgv.DataSource = dt;
                             FormatUserStatisticsColumns();
-                            label2.Text = $"¥Î¤á®ø¶O²Î­p - ¦@ {dt.Rows.Count} ­Ó¥Î¤á";
+                            label2.Text = $"ç”¨æˆ¶æ¶ˆè²»çµ±è¨ˆ - å…± {dt.Rows.Count} å€‹ç”¨æˆ¶  ";
                         }
                         else
                         {
-                            MessageBox.Show("¼ÈµL¥Î¤á¼Æ¾Ú", "´£¥Ü",
-                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            label2.Text = "æš«ç„¡ç”¨æˆ¶æ•¸æ“š";
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"¸ü¤J¥Î¤á²Î­p³øªí¥¢±Ñ: {ex.Message}", "¿ù»~",
+                MessageBox.Show($"è¼‰å…¥ç”¨æˆ¶çµ±è¨ˆå ±è¡¨å¤±æ•—: {ex.Message}", "éŒ¯èª¤",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        #region åœ–è¡¨æ¨¡å¼
+
+        /// <summary>
+        /// è¼‰å…¥éŠ·å”®è¶¨å‹¢åœ–è¡¨ï¼ˆæŠ˜ç·šåœ–ï¼‰
+        /// </summary>
+        private void LoadSalesTrendChart()
+        {
+            try
+            {
+                using (SqlConnection conn = DatabaseHelper.GetConnection())
+                {
+                    conn.Open();
+                    
+                    string query = @"
+                        SELECT 
+                            CONVERT(DATE, orderdate) AS SaleDate,
+                            COUNT(orderid) AS OrderCount,
+                            SUM(totalamount) AS TotalSales
+                        FROM Orders
+                        WHERE orderdate >= DATEADD(DAY, -30, GETDATE())
+                        GROUP BY CONVERT(DATE, orderdate)
+                        ORDER BY CONVERT(DATE, orderdate)";
+
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(query, conn))
+                    {
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+
+                        if (dt.Rows.Count > 0)
+                        {
+                            // è¨­å®šåœ–è¡¨æ¨™é¡Œ
+                            chart1.Titles.Clear();
+                            chart1.Titles.Add(new Title
+                            {
+                                Text = "éŠ·å”®è¶¨å‹¢ (æœ€è¿‘30å¤©)",
+                                Font = new Font("Segoe UI", 14F, FontStyle.Bold),
+                                ForeColor = Color.FromArgb(24, 144, 255)
+                            });
+
+                            // å‰µå»ºéŠ·å”®é¡æŠ˜ç·šåœ–
+                            Series salesSeries = new Series("éŠ·å”®é¡")
+                            {
+                                ChartType = SeriesChartType.Line,
+                                BorderWidth = 3,
+                                Color = Color.FromArgb(24, 144, 255),
+                                MarkerStyle = MarkerStyle.Circle,
+                                MarkerSize = 8,
+                                MarkerColor = Color.FromArgb(24, 144, 255)
+                            };
+
+                            // å‰µå»ºè¨‚å–®æ•¸æŠ˜ç·šåœ–
+                            Series orderSeries = new Series("è¨‚å–®æ•¸")
+                            {
+                                ChartType = SeriesChartType.Line,
+                                BorderWidth = 3,
+                                Color = Color.FromArgb(82, 196, 26),
+                                MarkerStyle = MarkerStyle.Circle,
+                                MarkerSize = 8,
+                                MarkerColor = Color.FromArgb(82, 196, 26),
+                                YAxisType = AxisType.Secondary
+                            };
+
+                            foreach (DataRow row in dt.Rows)
+                            {
+                                string date = Convert.ToDateTime(row["SaleDate"]).ToString("MM/dd");
+                                decimal sales = Convert.ToDecimal(row["TotalSales"]);
+                                int orders = Convert.ToInt32(row["OrderCount"]);
+
+                                salesSeries.Points.AddXY(date, sales);
+                                orderSeries.Points.AddXY(date, orders);
+                            }
+
+                            // è¨­å®š Y è»¸
+                            chart1.ChartAreas[0].AxisY2.Enabled = AxisEnabled.True;
+                            chart1.ChartAreas[0].AxisY.Title = "éŠ·å”®é¡ (NT$)";
+                            chart1.ChartAreas[0].AxisY2.Title = "è¨‚å–®æ•¸";
+                            chart1.ChartAreas[0].AxisX.Title = "æ—¥æœŸ";
+
+                            chart1.Series.Add(salesSeries);
+                            chart1.Series.Add(orderSeries);
+
+                            label2.Text = $" æœ€è¿‘ 30 å¤©éŠ·å”®è¶¨å‹¢åœ–è¡¨ - å…± {dt.Rows.Count} å¤©æœ‰è¨‚å–®è¨˜éŒ„  ";
+                        }
+                        else
+                        {
+                            label2.Text = "æœ€è¿‘ 30 å¤©æ²’æœ‰éŠ·å”®æ•¸æ“š";
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"è¼‰å…¥éŠ·å”®è¶¨å‹¢åœ–è¡¨å¤±æ•—: {ex.Message}", "éŒ¯èª¤",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         /// <summary>
-        /// ®æ¦¡¤Æ¾P°âÁÍ¶ÕÄæ¦ì
+        /// è¼‰å…¥ç”¢å“æ’ååœ–è¡¨ï¼ˆæŸ±ç‹€åœ–ï¼‰
+        /// </summary>
+        private void LoadProductRankingChart()
+        {
+            try
+            {
+                using (SqlConnection conn = DatabaseHelper.GetConnection())
+                {
+                    conn.Open();
+                    
+                    string query = @"
+                        SELECT TOP 10
+                            p.productname,
+                            SUM(od.quantity) AS TotalQuantity,
+                            SUM(od.quantity * od.price) AS TotalSales
+                        FROM OrderDetail od
+                        INNER JOIN Product p ON od.productid = p.productid
+                        GROUP BY p.productname
+                        ORDER BY SUM(od.quantity) DESC";
+
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(query, conn))
+                    {
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+
+                        if (dt.Rows.Count > 0)
+                        {
+                            // è¨­å®šåœ–è¡¨æ¨™é¡Œ
+                            chart1.Titles.Clear();
+                            chart1.Titles.Add(new Title
+                            {
+                                Text = "ç”¢å“éŠ·å”®æ’å (Top 10)",
+                                Font = new Font("Segoe UI", 14F, FontStyle.Bold),
+                                ForeColor = Color.FromArgb(24, 144, 255)
+                            });
+
+                            // å‰µå»ºéŠ·å”®æ•¸é‡æŸ±ç‹€åœ–
+                            Series quantitySeries = new Series("éŠ·å”®æ•¸é‡")
+                            {
+                                ChartType = SeriesChartType.Column,
+                                Color = Color.FromArgb(24, 144, 255)
+                            };
+
+                            // å‰µå»ºéŠ·å”®é‡‘é¡æŸ±ç‹€åœ–
+                            Series salesSeries = new Series("éŠ·å”®é‡‘é¡")
+                            {
+                                ChartType = SeriesChartType.Column,
+                                Color = Color.FromArgb(250, 173, 20),
+                                YAxisType = AxisType.Secondary
+                            };
+
+                            foreach (DataRow row in dt.Rows)
+                            {
+                                string productName = row["productname"].ToString();
+                                if (productName.Length > 10)
+                                    productName = productName.Substring(0, 10) + "...";
+
+                                int quantity = Convert.ToInt32(row["TotalQuantity"]);
+                                decimal sales = Convert.ToDecimal(row["TotalSales"]);
+
+                                quantitySeries.Points.AddXY(productName, quantity);
+                                salesSeries.Points.AddXY(productName, sales);
+                            }
+
+                            // è¨­å®š Y è»¸
+                            chart1.ChartAreas[0].AxisY2.Enabled = AxisEnabled.True;
+                            chart1.ChartAreas[0].AxisY.Title = "éŠ·å”®æ•¸é‡";
+                            chart1.ChartAreas[0].AxisY2.Title = "éŠ·å”®é‡‘é¡ (NT$)";
+                            chart1.ChartAreas[0].AxisX.Title = "ç”¢å“åç¨±";
+                            chart1.ChartAreas[0].AxisX.LabelStyle.Angle = -45;
+
+                            chart1.Series.Add(quantitySeries);
+                            chart1.Series.Add(salesSeries);
+
+                            label2.Text = $" ç”¢å“éŠ·å”®æ’ååœ–è¡¨ (Top 10)  ";
+                        }
+                        else
+                        {
+                            label2.Text = "æš«ç„¡ç”¢å“éŠ·å”®æ•¸æ“š";
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"è¼‰å…¥ç”¢å“æ’ååœ–è¡¨å¤±æ•—: {ex.Message}", "éŒ¯èª¤",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// è¼‰å…¥ç”¨æˆ¶çµ±è¨ˆåœ–è¡¨ï¼ˆé¤…åœ–ï¼‰
+        /// </summary>
+        private void LoadUserStatisticsChart()
+        {
+            try
+            {
+                using (SqlConnection conn = DatabaseHelper.GetConnection())
+                {
+                    conn.Open();
+                    
+                    string query = @"
+                        SELECT TOP 10
+                            u.username,
+                            ISNULL(SUM(o.totalamount), 0) AS TotalAmount
+                        FROM [User] u
+                        LEFT JOIN Orders o ON u.userid = o.userid
+                        GROUP BY u.username
+                        HAVING ISNULL(SUM(o.totalamount), 0) > 0
+                        ORDER BY ISNULL(SUM(o.totalamount), 0) DESC";
+
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(query, conn))
+                    {
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+
+                        if (dt.Rows.Count > 0)
+                        {
+                            // è¨­å®šåœ–è¡¨æ¨™é¡Œ
+                            chart1.Titles.Clear();
+                            chart1.Titles.Add(new Title
+                            {
+                                Text = " ç”¨æˆ¶æ¶ˆè²»ä½”æ¯” (Top 10)",
+                                Font = new Font("Segoe UI", 14F, FontStyle.Bold),
+                                ForeColor = Color.FromArgb(24, 144, 255)
+                            });
+
+                            // å‰µå»ºé¤…åœ–
+                            Series pieSeries = new Series("æ¶ˆè²»ä½”æ¯”")
+                            {
+                                ChartType = SeriesChartType.Pie,
+                                IsValueShownAsLabel = true,
+                                Label = "#PERCENT{P1}",
+                                LegendText = "#VALX",
+                                Font = new Font("Segoe UI", 9F)
+                            };
+
+                            // é¡è‰²èª¿è‰²æ¿
+                            Color[] colors = new[]
+                            {
+                                Color.FromArgb(24, 144, 255),
+                                Color.FromArgb(82, 196, 26),
+                                Color.FromArgb(250, 173, 20),
+                                Color.FromArgb(245, 34, 45),
+                                Color.FromArgb(114, 46, 209),
+                                Color.FromArgb(250, 84, 28),
+                                Color.FromArgb(19, 194, 194),
+                                Color.FromArgb(250, 140, 22),
+                                Color.FromArgb(135, 208, 104),
+                                Color.FromArgb(255, 85, 0)
+                            };
+
+                            int colorIndex = 0;
+                            foreach (DataRow row in dt.Rows)
+                            {
+                                string username = row["username"].ToString();
+                                decimal amount = Convert.ToDecimal(row["TotalAmount"]);
+
+                                DataPoint point = new DataPoint();
+                                point.SetValueXY(username, amount);
+                                point.Color = colors[colorIndex % colors.Length];
+                                point.LegendText = $"{username} - {amount:C0}";
+                                
+                                pieSeries.Points.Add(point);
+                                colorIndex++;
+                            }
+
+                            // è¨­å®šåœ–ä¾‹ä½ç½®
+                            chart1.Legends[0].Docking = Docking.Right;
+
+                            chart1.Series.Add(pieSeries);
+
+                            label2.Text = $" ç”¨æˆ¶æ¶ˆè²»ä½”æ¯”åœ–è¡¨ (Top 10)  ";
+                        }
+                        else
+                        {
+                            label2.Text = "æš«ç„¡ç”¨æˆ¶æ¶ˆè²»æ•¸æ“š";
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"è¼‰å…¥ç”¨æˆ¶çµ±è¨ˆåœ–è¡¨å¤±æ•—: {ex.Message}", "éŒ¯èª¤",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        #endregion
+
+        /// <summary>
+        /// æ ¼å¼åŒ–éŠ·å”®è¶¨å‹¢æ¬„ä½
         /// </summary>
         private void FormatSalesTrendColumns()
         {
@@ -319,12 +666,12 @@ namespace Online_Ordering_System
             {
                 col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-                if (col.Name.Contains("ª÷ÃB"))
+                if (col.Name.Contains("é‡‘é¡"))
                 {
                     col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                     col.DefaultCellStyle.Format = "C0";
                 }
-                else if (col.Name.Contains("¼Æ¶q"))
+                else if (col.Name.Contains("æ•¸é‡"))
                 {
                     col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 }
@@ -332,18 +679,18 @@ namespace Online_Ordering_System
         }
 
         /// <summary>
-        /// ®æ¦¡¤Æ²£«~±Æ¦WÄæ¦ì
+        /// æ ¼å¼åŒ–ç”¢å“æ’åæ¬„ä½
         /// </summary>
         private void FormatProductRankingColumns()
         {
             foreach (DataGridViewColumn col in dgv.Columns)
             {
-                if (col.Name == "²£«~¦WºÙ" || col.Name == "Ãş§O")
+                if (col.Name == "ç”¢å“åç¨±" || col.Name == "é¡åˆ¥")
                 {
                     col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     col.Width = 150;
                 }
-                else if (col.Name.Contains("ª÷ÃB") || col.Name.Contains("³æ»ù"))
+                else if (col.Name.Contains("é‡‘é¡") || col.Name.Contains("å–®åƒ¹"))
                 {
                     col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                     col.DefaultCellStyle.Format = "C0";
@@ -358,18 +705,18 @@ namespace Online_Ordering_System
         }
 
         /// <summary>
-        /// ®æ¦¡¤Æ¥Î¤á²Î­pÄæ¦ì
+        /// æ ¼å¼åŒ–ç”¨æˆ¶çµ±è¨ˆæ¬„ä½
         /// </summary>
         private void FormatUserStatisticsColumns()
         {
             foreach (DataGridViewColumn col in dgv.Columns)
             {
-                if (col.Name == "¥Î¤á¦WºÙ" || col.Name == "¹q¤l¶l¥ó")
+                if (col.Name == "ç”¨æˆ¶åç¨±" || col.Name == "é›»å­éƒµä»¶")
                 {
                     col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     col.Width = 150;
                 }
-                else if (col.Name.Contains("ª÷ÃB"))
+                else if (col.Name.Contains("é‡‘é¡"))
                 {
                     col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                     col.DefaultCellStyle.Format = "C0";
