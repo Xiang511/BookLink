@@ -198,7 +198,10 @@ namespace Online_Ordering_System
             }
         }
 
-
+        private void toolStripReport_Click(object sender, EventArgs e)
+        {
+            LoadUserControl<Reports>();
+        }
     }
 }
 

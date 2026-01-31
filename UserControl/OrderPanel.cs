@@ -13,7 +13,7 @@ using System.Windows.Forms;
 namespace Online_Ordering_System
 {
     public partial class OrderPanel : UserControl
-    {   
+    {
 
         public OrderPanel()
         {
@@ -51,19 +51,22 @@ namespace Online_Ordering_System
             dgv.DefaultCellStyle.Padding = new Padding(10, 0, 10, 0); // 增加文字左右間距
 
             dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         void LoadAllMemberDataTodataGridView1()
         {
             SqlConnection con = DatabaseHelper.GetConnection();
             con.Open();
-            string strsql = "select * from orders o ";
+            string strsql = "";
             if (UserProfile.Role != 1)
             {
-                strsql += " where userid = @UserId order by o.orderid desc";
-            }else
+                strsql = " select orderid,orderdate,totalamount,status from orders where userid = @UserId order by orderdate desc";
+            }
+            else
             {
-                strsql += " order by o.orderid desc ";
+                strsql = " select o.orderid, u.userid,u.username ,o.orderdate,o.totalamount,o.status from orders o inner join [user] u on o.userid = u.userid order by o.orderdate desc";
             }
             SqlCommand cmd = new SqlCommand(strsql, con);
             cmd.Parameters.AddWithValue("@UserId", UserProfile.UserId);
@@ -84,14 +87,11 @@ namespace Online_Ordering_System
             imageList2.Images.Clear();
             OrderList.InfoList.Clear();
 
+            listView2.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+
             SqlConnection con = DatabaseHelper.GetConnection();
             con.Open();
             string strsql = "select * from Orders o inner join OrderDetail od on o.orderid = od.orderid inner join product p on od.productid = p.productid where o.orderid = @OrderId and o.userid = @UserId ";
-
-            if (UserProfile.Role != 1)
-            {
-                strsql += " and o.userid = @UserId";
-            }
 
             SqlCommand cmd = new SqlCommand(strsql, con);
             cmd.Parameters.AddWithValue("@UserId", UserProfile.UserId);
@@ -157,9 +157,46 @@ namespace Online_Ordering_System
             con.Close();
         }
 
+        void ShowOrderDetail_member(int CurrentUser)
+        {
+            listView3.Clear();
+            listView3.View = View.Details;
+            listView3.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            listView3.Columns.Add("會員名稱", 120);
+            listView3.Columns.Add("電子郵件", 200);
+            listView3.Columns.Add("電話", 120);
+
+
+            SqlConnection con = DatabaseHelper.GetConnection();
+            con.Open();
+            string strsql = "select * from [user] where userid = @userid";
+            SqlCommand cmd = new SqlCommand(strsql, con);
+            cmd.Parameters.AddWithValue("@userid", CurrentUser);
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                ListViewItem lvi = new ListViewItem();
+                lvi.Text = (string)reader["username"];
+                lvi.SubItems.Add((string)reader["email"]);
+                if (reader["phone"] != DBNull.Value)
+                {
+                    lvi.SubItems.Add((string)reader["phone"]);
+                }
+                else
+                {
+                    lvi.SubItems.Add("未設定");
+                }
+
+
+                listView3.Items.Add(lvi);
+            }
+        }
+
+
+
         private void OrderPanel_Load(object sender, EventArgs e)
         {
-            if(AdminToolCB.Items.Count < 5)
+            if (AdminToolCB.Items.Count < 5)
             {
                 AdminToolCB.Items.Add("未處理");
                 AdminToolCB.Items.Add("處理中");
@@ -182,14 +219,32 @@ namespace Online_Ordering_System
 
                 ShowOrderDetail(selectid);
                 isAdmin(selectid);
+                AdminToolSave.Enabled = true;
+                AdminToolCB.Enabled = true;
+                if (UserProfile.Role == 1)
+                {
+                    int CurrentUser = (int)dataGridView1.Rows[e.RowIndex].Cells[1].Value;
+                    ShowOrderDetail_member(CurrentUser);
+                }
+
+
             }
+            else
+            {
+                AdminToolSave.Enabled = false;
+                AdminToolCB.Enabled = false;
+            }
+
+
+
+
         }
         private void isAdmin()
         {
             if (UserProfile.Role == 1)
             {
                 AdminTool.Visible = true;
-
+                materialCard1.Visible = true;
             }
             else
             {

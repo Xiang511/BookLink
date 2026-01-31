@@ -33,26 +33,20 @@
             this.listView2 = new System.Windows.Forms.ListView();
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.onlineOrderingSystemDataSet = new Online_Ordering_System.OnlineOrderingSystemDataSet();
-            this.ordersTableAdapter = new Online_Ordering_System.OnlineOrderingSystemDataSetTableAdapters.OrdersTableAdapter();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.materialCard3 = new MaterialSkin.Controls.MaterialCard();
             this.AdminToolSave = new System.Windows.Forms.Button();
             this.AdminTool = new System.Windows.Forms.GroupBox();
-            this.AdminToolCB = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.AdminToolCB = new System.Windows.Forms.ComboBox();
+            this.materialCard1 = new MaterialSkin.Controls.MaterialCard();
+            this.listView3 = new System.Windows.Forms.ListView();
             this.materialCard2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.onlineOrderingSystemDataSet)).BeginInit();
             this.materialCard3.SuspendLayout();
             this.AdminTool.SuspendLayout();
+            this.materialCard1.SuspendLayout();
             this.SuspendLayout();
             // 
             // materialCard2
@@ -61,12 +55,12 @@
             this.materialCard2.Controls.Add(this.listView2);
             this.materialCard2.Depth = 0;
             this.materialCard2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialCard2.Location = new System.Drawing.Point(450, 125);
+            this.materialCard2.Location = new System.Drawing.Point(18, 385);
             this.materialCard2.Margin = new System.Windows.Forms.Padding(14);
             this.materialCard2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard2.Name = "materialCard2";
             this.materialCard2.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard2.Size = new System.Drawing.Size(545, 550);
+            this.materialCard2.Size = new System.Drawing.Size(547, 326);
             this.materialCard2.TabIndex = 1;
             // 
             // listView2
@@ -75,7 +69,7 @@
             this.listView2.HideSelection = false;
             this.listView2.Location = new System.Drawing.Point(1, 0);
             this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(544, 550);
+            this.listView2.Size = new System.Drawing.Size(546, 326);
             this.listView2.TabIndex = 0;
             this.listView2.UseCompatibleStateImageBehavior = false;
             // 
@@ -89,73 +83,16 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4});
-            this.dataGridView1.DataSource = this.bindingSource1;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(415, 550);
+            this.dataGridView1.Size = new System.Drawing.Size(969, 243);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "orderid";
-            this.dataGridViewTextBoxColumn1.HeaderText = "編號";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 54;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "orderdate";
-            this.dataGridViewTextBoxColumn2.HeaderText = "日期";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 54;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "status";
-            this.dataGridViewTextBoxColumn3.HeaderText = "狀態";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 54;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "totalamount";
-            this.dataGridViewTextBoxColumn4.HeaderText = "金額";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 54;
-            // 
-            // bindingSource1
-            // 
-            this.bindingSource1.DataMember = "Orders";
-            this.bindingSource1.DataSource = this.onlineOrderingSystemDataSet;
-            // 
-            // onlineOrderingSystemDataSet
-            // 
-            this.onlineOrderingSystemDataSet.DataSetName = "OnlineOrderingSystemDataSet";
-            this.onlineOrderingSystemDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // ordersTableAdapter
-            // 
-            this.ordersTableAdapter.ClearBeforeFill = true;
             // 
             // label2
             // 
@@ -188,7 +125,7 @@
             this.materialCard3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard3.Name = "materialCard3";
             this.materialCard3.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard3.Size = new System.Drawing.Size(416, 550);
+            this.materialCard3.Size = new System.Drawing.Size(969, 249);
             this.materialCard3.TabIndex = 6;
             // 
             // AdminToolSave
@@ -210,20 +147,11 @@
             this.AdminTool.Controls.Add(this.label1);
             this.AdminTool.Controls.Add(this.AdminToolCB);
             this.AdminTool.Controls.Add(this.AdminToolSave);
-            this.AdminTool.Location = new System.Drawing.Point(18, 681);
+            this.AdminTool.Location = new System.Drawing.Point(572, 67);
             this.AdminTool.Name = "AdminTool";
             this.AdminTool.Size = new System.Drawing.Size(415, 41);
             this.AdminTool.TabIndex = 9;
             this.AdminTool.TabStop = false;
-            // 
-            // AdminToolCB
-            // 
-            this.AdminToolCB.Font = new System.Drawing.Font("新細明體", 14F);
-            this.AdminToolCB.FormattingEnabled = true;
-            this.AdminToolCB.Location = new System.Drawing.Point(184, 10);
-            this.AdminToolCB.Name = "AdminToolCB";
-            this.AdminToolCB.Size = new System.Drawing.Size(142, 27);
-            this.AdminToolCB.TabIndex = 9;
             // 
             // label1
             // 
@@ -234,23 +162,57 @@
             this.label1.TabIndex = 10;
             this.label1.Text = "管理者工具";
             // 
+            // AdminToolCB
+            // 
+            this.AdminToolCB.Font = new System.Drawing.Font("新細明體", 14F);
+            this.AdminToolCB.FormattingEnabled = true;
+            this.AdminToolCB.Location = new System.Drawing.Point(184, 10);
+            this.AdminToolCB.Name = "AdminToolCB";
+            this.AdminToolCB.Size = new System.Drawing.Size(142, 27);
+            this.AdminToolCB.TabIndex = 9;
+            // 
+            // materialCard1
+            // 
+            this.materialCard1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard1.Controls.Add(this.listView3);
+            this.materialCard1.Depth = 0;
+            this.materialCard1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialCard1.Location = new System.Drawing.Point(582, 385);
+            this.materialCard1.Margin = new System.Windows.Forms.Padding(14);
+            this.materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCard1.Name = "materialCard1";
+            this.materialCard1.Padding = new System.Windows.Forms.Padding(14);
+            this.materialCard1.Size = new System.Drawing.Size(405, 326);
+            this.materialCard1.TabIndex = 10;
+            this.materialCard1.Visible = false;
+            // 
+            // listView3
+            // 
+            this.listView3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listView3.HideSelection = false;
+            this.listView3.Location = new System.Drawing.Point(0, 0);
+            this.listView3.Name = "listView3";
+            this.listView3.Size = new System.Drawing.Size(405, 326);
+            this.listView3.TabIndex = 0;
+            this.listView3.UseCompatibleStateImageBehavior = false;
+            // 
             // OrderPanel
             // 
+            this.Controls.Add(this.materialCard1);
             this.Controls.Add(this.materialCard3);
+            this.Controls.Add(this.materialCard2);
             this.Controls.Add(this.AdminTool);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.materialCard2);
             this.Name = "OrderPanel";
             this.Size = new System.Drawing.Size(1073, 725);
             this.Load += new System.EventHandler(this.OrderPanel_Load);
             this.materialCard2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.onlineOrderingSystemDataSet)).EndInit();
             this.materialCard3.ResumeLayout(false);
             this.AdminTool.ResumeLayout(false);
             this.AdminTool.PerformLayout();
+            this.materialCard1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -262,19 +224,14 @@
         private System.Windows.Forms.ListView listView2;
         private System.Windows.Forms.ImageList imageList2;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.BindingSource bindingSource1;
-        private OnlineOrderingSystemDataSet onlineOrderingSystemDataSet;
-        private OnlineOrderingSystemDataSetTableAdapters.OrdersTableAdapter ordersTableAdapter;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private MaterialSkin.Controls.MaterialCard materialCard3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.Button AdminToolSave;
         private System.Windows.Forms.GroupBox AdminTool;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox AdminToolCB;
+        private MaterialSkin.Controls.MaterialCard materialCard1;
+        private System.Windows.Forms.ListView listView3;
     }
 }
