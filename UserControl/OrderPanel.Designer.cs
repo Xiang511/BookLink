@@ -42,6 +42,7 @@
             this.AdminToolCB = new System.Windows.Forms.ComboBox();
             this.materialCard1 = new MaterialSkin.Controls.MaterialCard();
             this.listView3 = new System.Windows.Forms.ListView();
+            this.btncancel = new System.Windows.Forms.Button();
             this.materialCard2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.materialCard3.SuspendLayout();
@@ -52,6 +53,7 @@
             // materialCard2
             // 
             this.materialCard2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard2.Controls.Add(this.btncancel);
             this.materialCard2.Controls.Add(this.listView2);
             this.materialCard2.Depth = 0;
             this.materialCard2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -197,6 +199,21 @@
             this.listView3.TabIndex = 0;
             this.listView3.UseCompatibleStateImageBehavior = false;
             // 
+            // btncancel
+            // 
+            this.btncancel.BackColor = System.Drawing.Color.Red;
+            this.btncancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btncancel.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btncancel.ForeColor = System.Drawing.Color.White;
+            this.btncancel.Location = new System.Drawing.Point(416, 279);
+            this.btncancel.Name = "btncancel";
+            this.btncancel.Size = new System.Drawing.Size(114, 30);
+            this.btncancel.TabIndex = 11;
+            this.btncancel.Text = "取消訂單";
+            this.btncancel.UseVisualStyleBackColor = false;
+            this.btncancel.Visible = false;
+            this.btncancel.Click += new System.EventHandler(this.btncancel_Click);
+            // 
             // OrderPanel
             // 
             this.Controls.Add(this.materialCard1);
@@ -234,5 +251,6 @@
         private System.Windows.Forms.ComboBox AdminToolCB;
         private MaterialSkin.Controls.MaterialCard materialCard1;
         private System.Windows.Forms.ListView listView3;
+        private System.Windows.Forms.Button btncancel;
     }
 }

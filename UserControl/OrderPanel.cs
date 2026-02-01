@@ -198,16 +198,16 @@ namespace Online_Ordering_System
         }
 
 
-
         private void OrderPanel_Load(object sender, EventArgs e)
         {
-            if (AdminToolCB.Items.Count < 5)
+            if (AdminToolCB.Items.Count < 6)
             {
                 AdminToolCB.Items.Add("未處理");
                 AdminToolCB.Items.Add("處理中");
                 AdminToolCB.Items.Add("已出貨");
                 AdminToolCB.Items.Add("已到貨");
                 AdminToolCB.Items.Add("已完成");
+                AdminToolCB.Items.Add("已退貨");
                 AdminToolCB.SelectedIndex = 0;
             }
 
@@ -231,6 +231,18 @@ namespace Online_Ordering_System
                     int CurrentUser = (int)dataGridView1.Rows[e.RowIndex].Cells[1].Value;
                     ShowOrderDetail_member(CurrentUser);
                 }
+                else
+                {
+                    string status = (string)dataGridView1.Rows[e.RowIndex].Cells[3].Value;
+                    
+                    if (status == "未處理"){
+                        btncancel.Visible = true;
+                    }
+                    else
+                    {
+                        btncancel.Visible = false;
+                    }
+                }
 
 
             }
@@ -238,6 +250,7 @@ namespace Online_Ordering_System
             {
                 AdminToolSave.Enabled = false;
                 AdminToolCB.Enabled = false;
+                btncancel.Visible = false;
             }
 
 
@@ -283,6 +296,30 @@ namespace Online_Ordering_System
 
         }
 
+
+        private void btncancel_Click(object sender, EventArgs e)
+        {
+            if (DialogResult.Yes == MessageBox.Show("確定取消訂單?", "確認", MessageBoxButtons.YesNo))
+            {
+                SqlConnection con = DatabaseHelper.GetConnection();
+                con.Open();
+                string strsql = "update orders set status = @Status where orderid = @OrderId";
+                SqlCommand cmd = new SqlCommand(strsql, con);
+                cmd.Parameters.AddWithValue("@Status", "已取消");
+                cmd.Parameters.AddWithValue("@OrderId", (int)dataGridView1.CurrentRow.Cells[0].Value);
+                cmd.ExecuteNonQuery();
+
+                string strsql2 = "update product set stock = stock + od.quantity from product p inner join OrderDetail od on p.productid = od.productid where od.orderid = @OrderId";
+                SqlCommand cmd2 = new SqlCommand(strsql2, con);
+                cmd2.Parameters.AddWithValue("@OrderId", (int)dataGridView1.CurrentRow.Cells[0].Value);
+                cmd2.ExecuteNonQuery();
+
+                con.Close();
+            }
+            MessageBox.Show("訂單狀態已更新");
+            OrderPanel_Load(this, EventArgs.Empty);
+        }
+
         private void AdminToolSave_Click(object sender, EventArgs e)
         {
             SqlConnection con = DatabaseHelper.GetConnection();
@@ -292,9 +329,20 @@ namespace Online_Ordering_System
             cmd.Parameters.AddWithValue("@Status", AdminToolCB.SelectedItem.ToString());
             cmd.Parameters.AddWithValue("@OrderId", (int)dataGridView1.CurrentRow.Cells[0].Value);
             cmd.ExecuteNonQuery();
+
+            if (AdminToolCB.SelectedItem.ToString() == "已退貨")
+            {
+                string strsql2 = "update product set stock = stock + od.quantity from product p inner join OrderDetail od on p.productid = od.productid where od.orderid = @OrderId";
+                SqlCommand cmd2 = new SqlCommand(strsql2, con);
+                cmd2.Parameters.AddWithValue("@OrderId", (int)dataGridView1.CurrentRow.Cells[0].Value);
+                cmd2.ExecuteNonQuery();
+            }
+
             con.Close();
             MessageBox.Show("訂單狀態已更新");
             OrderPanel_Load(this, EventArgs.Empty);
         }
+
+
     }
 }
