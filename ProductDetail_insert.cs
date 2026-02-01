@@ -24,11 +24,14 @@ namespace Online_Ordering_System
         {   
             CBStauts.Items.Add("上架中");
             CBStauts.Items.Add("已下架");
-            btndel.Visible = true;
+         
 
 
             if (globalVal.LoadId > 0)
             {
+
+                btndel.Visible = true;
+
                 SqlConnection con = DatabaseHelper.GetConnection();
                 con.Open();
                 string query = "select * from Product where productid = @LoadId";
@@ -59,7 +62,8 @@ namespace Online_Ordering_System
         private void BtnAddToCart_Click(object sender, EventArgs e)
         {
             if (globalVal.LoadId > 0)//修改商品
-            {   
+            {
+         
 
                 if (txtBookName.Text != "" && txtcategory.Text != "" && txtPrice.Text != "" && txtStock.Text != "" && txtdescription.Text != "" && txtISBN.Text != "" && txtPublisher.Text != "" && pictureBox1.Image != null)
 
