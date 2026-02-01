@@ -229,6 +229,16 @@ namespace Online_Ordering_System
                         cmd2.Parameters.AddWithValue("@price", price);
                         cmd2.ExecuteNonQuery();
                     }
+
+                    foreach (CartInfo item in CartList.InfoList)
+                    {   
+                        string stockQuery = "UPDATE Product SET stock = stock - @quantity WHERE productid = @productid";
+                        int quantity = item.orderQuantity;
+                        SqlCommand cmd3 = new SqlCommand(stockQuery, conn);
+                        cmd3.Parameters.AddWithValue("@quantity", quantity);
+                        cmd3.Parameters.AddWithValue("@productid", item.productID);
+                        cmd3.ExecuteNonQuery();
+                    }
                     MessageBox.Show($"訂單編號 {newOrderId} 已成功建立！");
                 }
                 listView1.Clear();
