@@ -133,6 +133,7 @@ namespace Online_Ordering_System
             globalVal.islogin = false;
             toolStripLBlUserName.Text = "Login";
             toolStripLBlUserName.Enabled = true;
+            toolStripReport.Visible = false;
             avatar1.Image = null;
             avatar1.Refresh();
         }

@@ -129,6 +129,12 @@ namespace Online_Ordering_System
                 return;
             }
 
+            if(cart.productQuantity == 0)
+            {
+                MessageBox.Show("該商品已無庫存");
+                return;
+            }
+
             // 1. 使用 Any 檢查是否已經存在相同的 ID
             bool isExist = CartList.InfoList.Any(item => item.productID == globalVal.LoadId);
 
