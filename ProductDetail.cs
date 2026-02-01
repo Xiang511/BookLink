@@ -123,6 +123,12 @@ namespace Online_Ordering_System
             cart.productImage = ProductList.InfoList[0].productImage;
             cart.orderQuantity = (int)numericUpDown1.Value;
 
+            if(numericUpDown1.Value == 0)
+            {
+                MessageBox.Show("請選擇購買數量");
+                return;
+            }
+
             // 1. 使用 Any 檢查是否已經存在相同的 ID
             bool isExist = CartList.InfoList.Any(item => item.productID == globalVal.LoadId);
 
