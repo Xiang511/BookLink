@@ -63,10 +63,10 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ProductDetail_insert.cs">
+    <Compile Include="Form\ProductDetail_insert.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProductDetail_insert.Designer.cs">
+    <Compile Include="Form\ProductDetail_insert.Designer.cs">
       <DependentUpon>ProductDetail_insert.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControl\CartPanel.cs">
@@ -76,16 +76,16 @@
       <DependentUpon>CartPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="DatabaseHelper.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="Form\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="Form\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form3.cs">
+    <Compile Include="Form\Form3.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form3.Designer.cs">
+    <Compile Include="Form\Form3.Designer.cs">
       <DependentUpon>Form3.cs</DependentUpon>
     </Compile>
     <Compile Include="globalVal.cs" />
@@ -95,10 +95,10 @@
     <Compile Include="UserControl\HomePanel.Designer.cs">
       <DependentUpon>HomePanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProductDetail.cs">
+    <Compile Include="Form\ProductDetail.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProductDetail.Designer.cs">
+    <Compile Include="Form\ProductDetail.Designer.cs">
       <DependentUpon>ProductDetail.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControl\Profile.cs">
@@ -126,10 +126,10 @@
     <Compile Include="UserControl\MarketPanel.Designer.cs">
       <DependentUpon>MarketPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="RegisterForm.cs">
+    <Compile Include="Form\RegisterForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RegisterForm.Designer.cs">
+    <Compile Include="Form\RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControl\Reports.cs">
@@ -138,22 +138,22 @@
     <Compile Include="UserControl\Reports.Designer.cs">
       <DependentUpon>Reports.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ProductDetail_insert.resx">
+    <EmbeddedResource Include="Form\ProductDetail_insert.resx">
       <DependentUpon>ProductDetail_insert.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\CartPanel.resx">
       <DependentUpon>CartPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="Form\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form3.resx">
+    <EmbeddedResource Include="Form\Form3.resx">
       <DependentUpon>Form3.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\HomePanel.resx">
       <DependentUpon>HomePanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProductDetail.resx">
+    <EmbeddedResource Include="Form\ProductDetail.resx">
       <DependentUpon>ProductDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\Profile.resx">
@@ -170,7 +170,7 @@
     <EmbeddedResource Include="UserControl\MarketPanel.resx">
       <DependentUpon>MarketPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RegisterForm.resx">
+    <EmbeddedResource Include="Form\RegisterForm.resx">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\Reports.resx">
