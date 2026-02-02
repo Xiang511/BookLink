@@ -179,7 +179,7 @@ namespace Online_Ordering_System
 
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.InitialDirectory = globalVal.strImageDir;
-            ofd.Filter = "圖片檔案類型(PNG)|*.png";
+            ofd.Filter = "圖片檔案類型(PNG)|*.png;*.jpg;*.jpeg;*.bmp";
             DialogResult R = ofd.ShowDialog();
 
             if (R == DialogResult.OK)
