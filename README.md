@@ -1,93 +1,95 @@
-# ®Ñ©±ºŞ²z¨t²Î (BookLink)
+# æ›¸åº—ç®¡ç†ç³»çµ± (BookLink)
 
-¤@­Ó°ò©ó Windows Forms ¶}µoªº®Ñ©±ºŞ²z¨t²Î¡A¨Ï¥Î .NET Framework 4.7.2 ©M SQL Server §@¬°«áºİ¸ê®Æ®w¡C
+![GitHub last commit](https://img.shields.io/github/last-commit/Xiang511/BookLink?display_timestamp=committer&style=flat-square) ![GitHub commit activity](https://img.shields.io/github/commit-activity/y/Xiang511/BookLink?style=flat-square) ![GitHub Created At](https://img.shields.io/github/created-at/Xiang511/BookLink?style=flat-square) ![GitHub License](https://img.shields.io/github/license/Xiang511/BookLink?style=flat-square)
+
+ä¸€å€‹åŸºæ–¼ Windows Forms é–‹ç™¼çš„æ›¸åº—ç®¡ç†ç³»çµ±ï¼Œä½¿ç”¨ .NET Framework 4.7.2 å’Œ SQL Server ä½œç‚ºå¾Œç«¯è³‡æ–™åº«ã€‚
 
 ## Introduction
 
-³o¬O¤@­Ó¥\¯à§¹¾ãªº®Ñ©±ºŞ²z¨t²Î¡A´£¨Ñ¨Ï¥ÎªÌµù¥U¡Bµn¤J¡B°Ó«~ÂsÄı¡BÁÊª«¨®ºŞ²z¡B­q³æ³B²zµ¥¥\¯à¡C
+ä¸€å€‹åŠŸèƒ½å®Œæ•´çš„æ›¸åº—ç®¡ç†ç³»çµ±ï¼Œæä¾›ä½¿ç”¨è€…è¨»å†Šã€ç™»å…¥ã€å•†å“ç€è¦½ã€è³¼ç‰©è»Šç®¡ç†ã€è¨‚å–®è™•ç†ç­‰åŠŸèƒ½ã€‚
 
 ## Features
 
-- **¨Ï¥ÎªÌ»{ÃÒ**
-  - ¨Ï¥ÎªÌµù¥U
-  - ¨Ï¥ÎªÌµn¤J/µn¥X
-  - ­Ó¤H¸ê®ÆºŞ²z
+- **ä½¿ç”¨è€…èªè­‰**
+  - ä½¿ç”¨è€…è¨»å†Š
+  - ä½¿ç”¨è€…ç™»å…¥/ç™»å‡º
+  - å€‹äººè³‡æ–™ç®¡ç†
 
-- **°Ó«~ºŞ²z**
-  - °Ó«~¦CªíÂsÄı
-  - °Ó«~¸Ô²Ó¸ê°T
-  - °Ó«~·j´M»P¿z¿ï
+- **å•†å“ç®¡ç†**
+  - å•†å“åˆ—è¡¨ç€è¦½
+  - å•†å“è©³ç´°è³‡è¨Š
+  - å•†å“æœå°‹èˆ‡ç¯©é¸
 
-- **ÁÊª«¨®¥\¯à**
-  - ¥[¤JÁÊª«¨®
-  - ­×§ï°Ó«~¼Æ¶q
-  - ²¾°£°Ó«~
-  - ¬d¬İÁÊª«¨®Á`­p
+- **è³¼ç‰©è»ŠåŠŸèƒ½**
+  - åŠ å…¥è³¼ç‰©è»Š
+  - ä¿®æ”¹å•†å“æ•¸é‡
+  - ç§»é™¤å•†å“
+  - æŸ¥çœ‹è³¼ç‰©è»Šç¸½è¨ˆ
 
-- **­q³æºŞ²z**
-  - «Ø¥ß­q³æ
-  - ¬d¬İ­q³æ¾ú¥v
-  - ­q³æª¬ºA°lÂÜ
+- **è¨‚å–®ç®¡ç†**
+  - å»ºç«‹è¨‚å–®
+  - æŸ¥çœ‹è¨‚å–®æ­·å²
+  - è¨‚å–®ç‹€æ…‹è¿½è¹¤
 
-- **³øªí¥\¯à**
-  - ­q³æ³øªí
-  - ¾P°â²Î­p
+- **å ±è¡¨åŠŸèƒ½**
+  - è¨‚å–®å ±è¡¨
+  - éŠ·å”®çµ±è¨ˆ
 
 ## Tech stack
 
-### ¶}µoÀô¹Ò
+### é–‹ç™¼ç’°å¢ƒ
 - **.NET Framework**: 4.7.2
-- **¶}µo¤u¨ã**: Visual Studio
-- **¸ê®Æ®w**: SQL Server (LocalDB)
+- **é–‹ç™¼å·¥å…·**: Visual Studio
+- **è³‡æ–™åº«**: SQL Server (LocalDB)
 
-### ¨Ï¥Îªº®M¥ó
-- **MaterialSkin.2** (v2.3.1) - Material Design UI ®Ø¬[
-- **FontAwesome.Sharp** (v6.6.0) - ¹Ï¥Ü®w
-- **AntdUI** (v2.2.14) - UI ¤¸¥ó®w
+### ä½¿ç”¨çš„å¥—ä»¶
+- **MaterialSkin.2** (v2.3.1) - Material Design UI æ¡†æ¶
+- **FontAwesome.Sharp** (v6.6.0) - åœ–ç¤ºåº«
+- **AntdUI** (v2.2.14) - UI å…ƒä»¶åº«
 
-### ±M®×µ²ºc
+### å°ˆæ¡ˆçµæ§‹
 ```
 Online-Ordering-System/
-¢u¢w¢w UserControl/           # ¨Ï¥ÎªÌ±±¨î¶µ
-¢x   ¢u¢w¢w HomePanel.cs       # ­º­¶­±ªO
-¢x   ¢u¢w¢w MarketPanel.cs     # °Ó«°­±ªO
-¢x   ¢u¢w¢w CartPanel.cs       # ÁÊª«¨®­±ªO
-¢x   ¢u¢w¢w OrderPanel.cs      # ­q³æ­±ªO
-¢x   ¢u¢w¢w Profile.cs         # ­Ó¤H¸ê®Æ­±ªO
-¢x   ¢|¢w¢w Reports.cs         # ³øªí­±ªO
-¢u¢w¢w Form1.cs               # µn¤Jªí³æ
-¢u¢w¢w Form3.cs               # ¥D­nÀ³¥Îµ{¦¡ªí³æ
-¢u¢w¢w RegisterForm.cs        # µù¥Uªí³æ
-¢u¢w¢w ProductDetail.cs       # °Ó«~¸Ô±¡ªí³æ
-¢u¢w¢w ProductDetail_insert.cs # °Ó«~·s¼Wªí³æ
-¢u¢w¢w DatabaseHelper.cs      # ¸ê®Æ®w¾Ş§@»²§UÃş§O
-¢u¢w¢w globalVal.cs           # ¥ş°ìÅÜ¼Æ»P³]©w
-¢|¢w¢w Program.cs             # µ{¦¡¶i¤JÂI
+â”œâ”€â”€ UserControl/           # ä½¿ç”¨è€…æ§åˆ¶é …
+â”‚   â”œâ”€â”€ HomePanel.cs       # é¦–é é¢æ¿
+â”‚   â”œâ”€â”€ MarketPanel.cs     # å•†åŸé¢æ¿
+â”‚   â”œâ”€â”€ CartPanel.cs       # è³¼ç‰©è»Šé¢æ¿
+â”‚   â”œâ”€â”€ OrderPanel.cs      # è¨‚å–®é¢æ¿
+â”‚   â”œâ”€â”€ Profile.cs         # å€‹äººè³‡æ–™é¢æ¿
+â”‚   â””â”€â”€ Reports.cs         # å ±è¡¨é¢æ¿
+â”œâ”€â”€ Form1.cs               # ç™»å…¥è¡¨å–®
+â”œâ”€â”€ Form3.cs               # ä¸»è¦æ‡‰ç”¨ç¨‹å¼è¡¨å–®
+â”œâ”€â”€ RegisterForm.cs        # è¨»å†Šè¡¨å–®
+â”œâ”€â”€ ProductDetail.cs       # å•†å“è©³æƒ…è¡¨å–®
+â”œâ”€â”€ ProductDetail_insert.cs # å•†å“æ–°å¢è¡¨å–®
+â”œâ”€â”€ DatabaseHelper.cs      # è³‡æ–™åº«æ“ä½œè¼”åŠ©é¡åˆ¥
+â”œâ”€â”€ globalVal.cs           # å…¨åŸŸè®Šæ•¸èˆ‡è¨­å®š
+â””â”€â”€ Program.cs             # ç¨‹å¼é€²å…¥é»
 ```
 
 ## Installation Guide
 
-### «e¸m»İ¨D
-1. Windows §@·~¨t²Î
-2. Visual Studio 2017 ©Î§ó·sª©¥»
-3. .NET Framework 4.7.2 ©Î§ó·sª©¥»
+### å‰ç½®éœ€æ±‚
+1. Windows ä½œæ¥­ç³»çµ±
+2. Visual Studio 2017 æˆ–æ›´æ–°ç‰ˆæœ¬
+3. .NET Framework 4.7.2 æˆ–æ›´æ–°ç‰ˆæœ¬
 4. SQL Server ( Developer edition )
 
-### ¦w¸Ë¨BÆJ
+### å®‰è£æ­¥é©Ÿ
 
-1. **³]©w¸ê®Æ®w**
+1. **è¨­å®šè³‡æ–™åº«**
 1. 
-   - «Ø¥ß¦W¬° `OnlineOrderingSystem` ªº¸ê®Æ®w
+   - å»ºç«‹åç‚º `OnlineOrderingSystem` çš„è³‡æ–™åº«
 
    ```csharp
-   scsb.DataSource = @".";                         // ¦øªA¾¹¦a§}
-   scsb.InitialCatalog = "OnlineOrderingSystem";   // ¸ê®Æ®w¦WºÙ
-   scsb.IntegratedSecurity = true;                 // Windows ÅçÃÒ
+   scsb.DataSource = @".";                         // ä¼ºæœå™¨åœ°å€
+   scsb.InitialCatalog = "OnlineOrderingSystem";   // è³‡æ–™åº«åç¨±
+   scsb.IntegratedSecurity = true;                 // Windows é©—è­‰
    ```
 
-2. **ÁÙ­ì NuGet ®M¥ó**
-   - ¦b Visual Studio ¤¤¶}±Ò¤è®×
-   - ¥kÁäÂI¿ï¤è®× ¡÷ ÁÙ­ì NuGet ®M¥ó
+2. **é‚„åŸ NuGet å¥—ä»¶**
+   - åœ¨ Visual Studio ä¸­é–‹å•Ÿæ–¹æ¡ˆ
+   - å³éµé»é¸æ–¹æ¡ˆ â†’ é‚„åŸ NuGet å¥—ä»¶
 
 ## License
-¥»±M®×±Ä¥Î Apache-2.0 ±ÂÅv±ø´Ú
+æœ¬å°ˆæ¡ˆæ¡ç”¨ Apache-2.0 æˆæ¬Šæ¢æ¬¾
