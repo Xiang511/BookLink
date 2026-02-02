@@ -195,6 +195,7 @@
     <None Include="docs\TROUBLESHOOTING.md" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="README.md" />
     <None Include="Resources\undraw_login_weas.png" />
   </ItemGroup>
   <ItemGroup>
