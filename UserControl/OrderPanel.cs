@@ -322,6 +322,16 @@ namespace Online_Ordering_System
 
         private void AdminToolSave_Click(object sender, EventArgs e)
         {
+            try
+            {
+                int test = (int)dataGridView1.CurrentRow.Cells[0].Value;
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("請選擇訂單");
+                return;
+            }
             SqlConnection con = DatabaseHelper.GetConnection();
             con.Open();
             string strsql = "update orders set status = @Status where orderid = @OrderId";
